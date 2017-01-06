@@ -1,0 +1,25 @@
+<!-- The following doctype doesn't work when offline, so default to old one, 
+	which does work. <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate 
+	Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"> -->
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">false</property>
+    	<property name="format_sql">false</property>
+		<mapping class="com.oorni.model.User" />
+		<mapping class="com.oorni.model.Role" />
+		<mapping class="com.oorni.model.SupportRequest" />
+		<mapping class="com.oorni.model.MerchantType" />
+		<mapping class="com.oorni.model.Merchant" />
+		<mapping class="com.oorni.model.Category" />
+		<mapping class="com.oorni.model.Offer" />
+		<mapping class="com.oorni.model.OfferLabel" />
+		<mapping class="com.oorni.model.AppConfig" />
+		<mapping class="com.oorni.model.Store" />
+		<mapping class="com.oorni.model.Report" />
+		<mapping class="com.oorni.model.Payment" />
+		<mapping class="com.oorni.model.AppLog" />
+	</session-factory>
+</hibernate-configuration>
