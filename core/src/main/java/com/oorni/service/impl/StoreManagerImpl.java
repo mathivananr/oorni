@@ -130,15 +130,18 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 		}
 		report.setEnabled(true);
 		String targetLink = offer.getTargetURL();
-		Merchant merchant = merchantManager.getMerchantByName(offer.getMerchantName());
-		if(merchant != null) {
-			report.setMerchantId(String.valueOf(merchant.getMerchantId()));
-			report.setAffliateSource(merchant.getAffliateSource());
-			if (!StringUtil.isEmptyString(targetLink) && !StringUtil.isEmptyString(merchant.getAffliateParams())) {
-				if (targetLink.contains("?")) {
-					targetLink = targetLink + "&" + merchant.getAffliateParams();
-				} else {
-					targetLink = targetLink + "?" + merchant.getAffliateParams();
+		if(!StringUtil.isEmptyString(offer.getMerchantName())){
+			Merchant merchant = merchantManager.getMerchantByName(offer.getMerchantName().toLowerCase());
+			if(merchant != null) {
+				targetLink = merchant.getTargetURL();
+				report.setMerchantId(String.valueOf(merchant.getMerchantId()));
+				report.setAffliateSource(merchant.getAffliateSource());
+				if (!StringUtil.isEmptyString(targetLink) && !StringUtil.isEmptyString(merchant.getAffliateParams())) {
+					if (targetLink.contains("?")) {
+						targetLink = targetLink + "&" + merchant.getAffliateParams();
+					} else {
+						targetLink = targetLink + "?" + merchant.getAffliateParams();
+					}
 				}
 			}
 		}
@@ -146,9 +149,9 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 		report = reportManager.saveReport(report);
 		if (!StringUtil.isEmptyString(targetLink)) {
 			if (targetLink.contains("?")) {
-				targetLink = targetLink + "&" + "oniref=" + report.getReportId();
+				targetLink = targetLink + "&" + "aff_sub=" + report.getReportId();
 			} else {
-				targetLink = targetLink + "?" + "oniref=" + report.getReportId();
+				targetLink = targetLink + "?" + "aff_sub=" + report.getReportId();
 			}
 		}
 		return targetLink;

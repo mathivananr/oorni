@@ -38,8 +38,8 @@
                    defaultsort="1" id="merchants" pagesize="25" class="table table-condensed table-striped table-hover" export="true">
         <display:column property="merchantName" escapeXml="true" sortable="true" titleKey="merchants.merchantName" style="width: 25%"
                         url="/admin/merchant?from=list" paramId="id" paramProperty="merchantId"/>
-        <display:column property="merchantType.typeName" escapeXml="true" sortable="true" titleKey="merchants.merchantType"
-                        style="width: 34%"/>
+        <%-- <display:column property="merchantType.typeName" escapeXml="true" sortable="true" titleKey="merchants.merchantTypes"
+                        style="width: 34%"/> --%>
         <display:column sortProperty="enabled" sortable="true" titleKey="merchant.enabled"
                         style="width: 16%; padding-left: 15px" media="html">
             <input type="checkbox" disabled="disabled" <c:if test="${merchants.enabled}">checked="checked"</c:if>/>

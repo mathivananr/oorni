@@ -42,11 +42,12 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<select id="merchantType" name="merchantType.typeId" class="form-control">
+				<%-- <select id="merchantTypes" name="merchantTypes" class="form-control" multiple="multiple">
 					<c:forEach items="${merchantTypeList}" var="type">
-	                	<option value="${type.typeId}" ${fn:contains(merchantType.typeId, type.typeName) ? 'selected' : ''}>${type.typeName}</option>
+	                	<option value="${type.typeId}" ${fn:contains(merchantTypes.typeId, type.typeName) ? 'selected' : ''}>${type.typeName}</option>
 	                </c:forEach>
-				</select>
+				</select> --%>
+				<form:select class="form-control" multiple="true" path="merchantTypes" items="${merchantTypeList}" itemLabel="typeName" itemValue="typeId" />
 			</div>
 		</div>
 

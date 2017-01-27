@@ -180,6 +180,23 @@ public class MerchantDaoHibernate extends GenericDaoHibernate<Merchant, Long>
 	
 	/**
 	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<MerchantType> getMerchantTypesByIds(List<String> ids) {
+		List<Long> idList = new ArrayList<Long>();
+		for(String id : ids) {
+			   idList.add(Long.parseLong(id)); 
+			}
+		return getSession()
+				.createQuery(
+						"select merchantType from MerchantType as merchantType where "
+								+ "merchantType.typeId in :list order by merchantType.typeOrder")
+				.setParameterList("list", idList).list();
+	}
+	
+	/**
+	 * {@inheritDoc}
 	 * 
 	 * @throws OorniException
 	 */

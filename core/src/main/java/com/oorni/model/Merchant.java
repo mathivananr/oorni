@@ -3,6 +3,7 @@ package com.oorni.model;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +12,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Indexed;
 
@@ -33,7 +38,7 @@ public class Merchant extends BaseObject implements Serializable {
 	private Long merchantId;
 	private String merchantName;
 	private String description;
-	private MerchantType merchantType;
+	private List<MerchantType> merchantTypes;
 	private String logoPath;
 	private String targetURL;
 	private String URL;
@@ -81,14 +86,16 @@ public class Merchant extends BaseObject implements Serializable {
 		this.description = description;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "merchant_type_id")
-	public MerchantType getMerchantType() {
-		return merchantType;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SELECT)
+	@JoinTable(name = "ku_rel_merchant_category", joinColumns = {@JoinColumn(name="merchant_id")},
+            inverseJoinColumns = {@JoinColumn(name="category_id")} )
+	public List<MerchantType> getMerchantTypes() {
+		return merchantTypes;
 	}
 
-	public void setMerchantType(MerchantType merchantType) {
-		this.merchantType = merchantType;
+	public void setMerchantTypes(List<MerchantType> merchantTypes) {
+		this.merchantTypes = merchantTypes;
 	}
 
 	@Column(name = "logo_path")

@@ -12,7 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -78,7 +78,7 @@ public class MerchantType extends BaseObject implements Serializable {
 		this.typeOrder = typeOrder;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "merchantType")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "merchantTypes")
 	public List<Merchant> getMerchants() {
 		return merchants;
 	}

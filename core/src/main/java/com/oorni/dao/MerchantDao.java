@@ -36,6 +36,8 @@ public interface MerchantDao extends GenericDao<Merchant, Long> {
 
 	List<Merchant> getMerchantByTypes(List<String> merchantTypes);
 	
+	List<MerchantType> getMerchantTypesByIds(List<String> ids);
+	
 	OfferLabel getOfferLabelByLabel(String label) throws OorniException;
 	
 	OfferLabel saveOfferLabel(OfferLabel offerLabel) throws OorniException;

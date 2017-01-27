@@ -39,6 +39,8 @@ public interface MerchantManager extends GenericManager<Merchant, Long> {
 
 	List<Merchant> getMerchantByTypes(List<String> merchantTypes);
 	
+	List<MerchantType> getMerchantTypesByIds(List<String> ids);
+	
 	OfferLabel getOfferLabelByLabel(String label) throws OorniException;
 	
 	OfferLabel saveOfferLabel(OfferLabel offerLabel) throws OorniException;

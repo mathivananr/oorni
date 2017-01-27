@@ -169,8 +169,13 @@ public class MerchantController extends BaseFormController {
 	@RequestMapping(value = "/admin/saveMerchantDetails", method = RequestMethod.POST)
 	public ModelAndView saveMerchant(Merchant merchant, BindingResult errors,
 			HttpServletRequest request) {
+		
 		Model model = new ExtendedModelMap();
 		try {
+			String[] merchantTypes = request.getParameterValues("merchantTypes");
+			if(!StringUtil.isEmptyString(merchantTypes)) {
+				merchant.setMerchantTypes(merchantManager.getMerchantTypesByIds(Arrays.asList(merchantTypes)));
+			}
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest
 					.getFile("file");

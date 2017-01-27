@@ -55,7 +55,7 @@ public class MerchantManagerImpl extends GenericManagerImpl<Merchant, Long>
 				// write the file to the file specified
 				OutputStream bos = new FileOutputStream(
 						uploadDir
-								+ merchant.getMerchantName().replaceAll(" ",
+								+ merchant.getMerchantName().toLowerCase().replaceAll(" ",
 										"-")
 								+ "."
 								+ FilenameUtils.getExtension(file
@@ -80,7 +80,7 @@ public class MerchantManagerImpl extends GenericManagerImpl<Merchant, Long>
 						+ Constants.FILE_SEP
 						+ "logo"
 						+ Constants.FILE_SEP
-						+ merchant.getMerchantName().replaceAll(" ", "-")
+						+ merchant.getMerchantName().toLowerCase().replaceAll(" ", "-")
 						+ "."
 						+ FilenameUtils
 								.getExtension(file.getOriginalFilename());
@@ -97,6 +97,7 @@ public class MerchantManagerImpl extends GenericManagerImpl<Merchant, Long>
 			label.setIsMerchant(true);
 			saveOfferLabel(label);
 		}
+		merchant.setMerchantName(merchant.getMerchantName().toLowerCase());
 		return merchantDao.saveMerchant(merchant);
 	}
 
@@ -131,6 +132,10 @@ public class MerchantManagerImpl extends GenericManagerImpl<Merchant, Long>
 
 	public List<Merchant> getMerchantByTypes(List<String> merchantTypes) {
 		return merchantDao.getMerchantByTypes(merchantTypes);
+	}
+	
+	public List<MerchantType> getMerchantTypesByIds(List<String> ids) {
+		return merchantDao.getMerchantTypesByIds(ids);
 	}
 
 	public MerchantType getMerchantTypeByName(String merchantTypeName)
