@@ -1,12 +1,17 @@
 package com.oorni.webapp.controller;
 
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
@@ -16,14 +21,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.tuckey.web.filters.urlrewrite.utils.StringUtils;
 
 import com.oorni.Constants;
 import com.oorni.common.OorniException;
 import com.oorni.model.MerchantType;
 import com.oorni.model.Store;
+import com.oorni.model.User;
 import com.oorni.service.MerchantManager;
 import com.oorni.service.ReportManager;
+import com.oorni.service.RoleManager;
 import com.oorni.service.StoreManager;
+import com.oorni.service.UserExistsException;
+import com.oorni.service.UserManager;
 import com.oorni.util.CommonUtil;
 
 @Controller
@@ -32,6 +42,7 @@ public class StoreController extends BaseFormController {
 	private StoreManager storeManager;
 	private MerchantManager merchantManager;
 	private ReportManager reportManager;
+	private RoleManager roleManager;
 
 	@Autowired
 	public void setStoreManager(StoreManager storeManager) {
@@ -48,15 +59,29 @@ public class StoreController extends BaseFormController {
 		this.reportManager = reportManager;
 	}
 
+	@Autowired
+	public void setRoleManager(RoleManager roleManager) {
+		this.roleManager = roleManager;
+	}
+
 	@ModelAttribute
 	@RequestMapping(value = "/user/createStore", method = RequestMethod.GET)
 	public ModelAndView showCreateStore(final HttpServletRequest request,
 			final HttpServletResponse response) throws OorniException {
 		Model model = new ExtendedModelMap();
 		model.addAttribute(Constants.PAGE, new Store());
-		return new ModelAndView("/user/createStore", model.asMap());
+		return new ModelAndView("/user/storeform", model.asMap());
 	}
 
+	@ModelAttribute
+	@RequestMapping(value = "/createStore", method = RequestMethod.GET)
+	public ModelAndView showCreateStorePage(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		model.addAttribute(Constants.PAGE, new Store());
+		return new ModelAndView("/createStore", model.asMap());
+	}
+	
 	@ModelAttribute
 	@RequestMapping(value = "/user/editStore", method = RequestMethod.GET)
 	public ModelAndView showEditStore(final HttpServletRequest request,
@@ -69,7 +94,7 @@ public class StoreController extends BaseFormController {
 			saveError(request, "you dont own any store yet! just create one");
 			model.addAttribute(Constants.PAGE, new Store());
 		}
-		return new ModelAndView("/user/createStore", model.asMap());
+		return new ModelAndView("/user/storeform", model.asMap());
 	}
 
 	@ModelAttribute
@@ -94,7 +119,86 @@ public class StoreController extends BaseFormController {
 			return new ModelAndView("redirect:/store/"+store.getStoreName());
 		} catch (OorniException e) {
 			model.addAttribute(Constants.PAGE, store);
-			return new ModelAndView("/user/createStore", model.asMap());
+			return new ModelAndView("/user/storeform", model.asMap());
+		}
+	}
+	
+	@ModelAttribute
+	@RequestMapping(value = "/createStore", method = RequestMethod.POST)
+	public ModelAndView createStore(Store store, BindingResult errors,
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Model model = new ExtendedModelMap();
+		try {
+			User  user = null;
+			if(!CommonUtil.getLoggedInUserId().equalsIgnoreCase("anonymousUser")) {
+				user = CommonUtil.getLoggedInUser();
+			} else {
+				user = new User();
+				user.setEmail(request.getParameter("email"));
+				if(this.getUserManager().getUserByUsername(user.getEmail()) != null) {
+					throw new OorniException("Account already exists for this email : "+ user.getEmail());
+				}
+				user.setPassword(request.getParameter("password"));
+
+		        if (validator != null) { // validator is null during testing
+		            validator.validate(user, errors);
+
+		            if (StringUtils.isBlank(user.getPassword())) {
+		                errors.rejectValue("password", "errors.required", new Object[] { getText("user.password", request.getLocale()) },
+		                        "Password is a required field.");
+		            }
+
+		            if (errors.hasErrors()) {
+		            	return new ModelAndView("createStore", model.asMap());
+		            }
+		        }
+
+		        final Locale locale = request.getLocale();
+
+		        user.setEnabled(true);
+
+		        // Set the default user role on this new user
+		        user.addRole(roleManager.getRole(Constants.USER_ROLE));
+
+		        // unencrypted users password to log in user automatically
+		        final String password = user.getPassword();
+
+		        try {
+		            this.getUserManager().saveUser(user);
+		        } catch (final AccessDeniedException ade) {
+		            // thrown by UserSecurityAdvice configured in aop:advisor userManagerSecurity
+		            log.warn(ade.getMessage());
+		            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+		            return null;
+		        } catch (final UserExistsException e) {
+		            errors.rejectValue("username", "errors.existing.user",
+		                    new Object[] { user.getUsername(), user.getEmail() }, "duplicate user");
+
+		            return new ModelAndView("/createStore", model.asMap());
+		        }
+
+		        request.getSession().setAttribute(Constants.REGISTERED, Boolean.TRUE);
+
+		        // log user in automatically
+		        final UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+		                user, password, user.getAuthorities());
+		        auth.setDetails(user);
+		        SecurityContextHolder.getContext().setAuthentication(auth);
+			}
+			if(storeManager.getStoreByName(store.getStoreName()) != null ) {
+				throw new OorniException("store name already exists for name : "+store.getStoreName());
+			} else {
+				Store updatedStore = storeManager.saveStore(store);
+				CommonUtil.getLoggedInUser().setStore(updatedStore);
+				saveMessage(request, "Store saved successfully.");
+				model.addAttribute(Constants.PAGE, updatedStore);
+				return new ModelAndView("redirect:/store/"+store.getStoreName());
+			}
+		} catch (OorniException e) {
+			model.addAttribute(Constants.PAGE, store);
+			log.error(e.getMessage(), e);
+			saveError(request, e.getMessage());
+			return new ModelAndView("/createStore", model.asMap());
 		}
 	}
 
@@ -135,7 +239,7 @@ public class StoreController extends BaseFormController {
 		return new ModelAndView("redirect:" + url);
 	}
 	
-	@RequestMapping(value = "/hook/merchant/{storeName}/{merchantName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/hook/{storeName}/{merchantName}", method = RequestMethod.GET)
 	public ModelAndView gotoMerchantURL(final HttpServletRequest request,
 			final HttpServletResponse response,
 			@PathVariable("storeName") String storeName,

@@ -6,23 +6,25 @@
 </head>
 <body id="updatePassword">
 
-<div class="col-sm-3">
+<div class="container">
+<div class="col-sm-12">
     <h2><fmt:message key="updatePassword.heading"/></h2>
-    <c:choose>
+    <hr/>
+    <%-- <c:choose>
         <c:when test="${not empty token}">
             <p><fmt:message key="updatePassword.passwordReset.message"/></p>
         </c:when>
         <c:otherwise>
             <p><fmt:message key="updatePassword.changePassword.message"/></p>
         </c:otherwise>
-    </c:choose>
+    </c:choose> --%>
 </div>
-<div class="col-sm-5">
+<div class="col-sm-12">
 	<form method="post" id="updatePassword" action="<c:url value='/updatePassword'/>" class="well" autocomplete="off">
 		
         <div class="form-group">
-            <label class="control-label"><fmt:message key="user.username"/></label>
-            <input type="text" name="username" class="form-control" id="username" value="<c:out value="${username}" escapeXml="true"/>" required>
+            <label class="control-label"><fmt:message key="user.email"/></label>
+            <input type="text" name="username" class="form-control" id="username" value="<c:out value="${username}" escapeXml="true"/>" required readonly>
         </div>
 
 	    <c:choose>
@@ -42,12 +44,12 @@
             <input type="password" class="form-control" name="password" id="password" required>
         </div>
 	    
-	    <div class="form-group">
+	    <div class="form-group pull-right">
 		    <button type="submit" class="btn btn-large btn-primary">
-		        <i class="icon-ok icon-white"></i> <fmt:message key='updatePassword.changePasswordButton'/>
+		        <i class="icon-ok icon-white"></i> <fmt:message key='button.done'/>
 		    </button>
 	    </div>
 	</form>
 </div>	
-
+</div>
 </body>

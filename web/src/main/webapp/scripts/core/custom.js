@@ -14,12 +14,10 @@ $(window).scroll(function(){
 	if($(window).scrollTop() == 0) {
 		$("#navigation").removeClass("navbar-fixed-top");
 	}
-	
-	if($(window).scrollTop() >= $('#offers-container').offset().top + $('#offers-container').outerHeight() - window.innerHeight && $("#scrollReached").val() == "false") {
+	if($('#offers-container').html() != undefined && $(window).scrollTop() >= $('#offers-container').offset().top + $('#offers-container').outerHeight() - window.innerHeight && $("#scrollReached").val() == "false") {
         $("#scrollReached").val("true");
         loadMoreOffers();
     }
-	
 });
 
 $(window).on('hashchange', function() {
@@ -375,4 +373,83 @@ function ajaxLogin(){
         return false; 
     }
 });
+}
+
+
+function loadCarousel(label) {
+	var colors = [['#00c3ff', '#ffff1c'],['#348F50', '#56B4D3'],['#FF512F', '#F09819'],['#fff', '#111']];
+	$.ajax({
+		type : "GET",
+		url : "/carousel/"+label,
+		success : function(response) {
+			if(response.length > 0){
+				var w = window.innerWidth-50;
+				var h = window.innerHeight;
+				var height = h/2;
+				if(w < 400) {
+					height = 180;
+				} else if(height > 350) {
+					height = 350;
+				}
+				var width = w;
+				var titleXPosistion = w/4;
+				var titleYPosistion = 50;
+				var carouselContent = '<div id="carouselWithCaptions" class="carousel slide" data-ride="carousel">';
+				var slideConfig = '';
+				var slideContent = '';
+				var isActive = 'active';
+				var colorCount = 0;
+				for(var i = 0; i<response.length; i++) {
+					if(colorCount > colors.length-1 ) {
+						colorCount = 0;
+					}
+					if(response[i].contentType && response[i].contentType == 'text') {
+						if(slideConfig == '') {
+							slideConfig = slideConfig + '<ol class="carousel-indicators">'
+						}
+						slideConfig = slideConfig + '<li data-target="#carouselWithCaptions" data-slide-to="'+i+'" class="'+isActive+'"></li>';
+						if(slideContent == '') {
+							slideContent = slideContent + '<div class="carousel-inner" role="listbox">';
+						}
+						var svg = '<svg width="'+width+'" height="'+height+'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+height+'" preserveAspectRatio="none">'
+									+	'<defs><linearGradient id="background'+i+'">'
+									+	'<stop offset="0%" stop-color="'+colors[colorCount][0]+'" />'
+									+	'<stop offset="100%" stop-color="'+colors[colorCount][1]+'" />'
+									+	'</linearGradient>'
+									+	'<style type="text/css">#holder_159ef10fa87 text { fill:url(#background'+i+');font-weight:normal;font-family:Helvetica, monospace;font-size:40pt } </style>'
+									+	'</defs><g id="holder_159ef10fa87"><rect width="'+width+'" height="'+height+'" fill="url(#background'+i+')"></rect><g><text x="50%" y="30%" text-anchor="middle">'+response[i].carouselTitle+'</text></g></g></svg>';
+						var src = '\'data:image/svg+xml;base64,'+btoa(svg)+'\'';
+						slideContent = slideContent + '<div class="carousel-item '+isActive+'">'
+							+'				<a href="/offers" ><img class="d-block img-fluid" alt="'+response[i].carouselTitle+'"'
+							+'					src='+src
+							+'					data-holder-rendered="true">'
+							+'				<div class="carousel-caption d-none d-md-block">'
+							+'					<h3>'+response[i].description+'</h3>'
+							+'					<p>'+response[i].content+'</p>'
+							+'				</div>'
+							+'			</div></a>';
+							isActive = '';
+							colorCount++;
+					}
+				}
+				if(slideConfig != '') {
+					slideConfig = slideConfig + '</ol>';
+				}
+				if(slideContent != '') {
+					slideContent = slideContent + '</div>';
+				}
+				carouselContent = carouselContent + slideConfig + slideContent + '</div>';
+				$('#carousel').html(carouselContent);
+				$('#carouselWithCaptions').carousel({
+					  interval: 3000,
+					  cycle: true
+					}); 
+			} else {
+				console.log(response);
+			}
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
 }

@@ -1,9 +1,14 @@
 package com.oorni.service.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -12,13 +17,17 @@ import java.util.Map;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.oorni.Constants;
 import com.oorni.common.OorniException;
 import com.oorni.dao.OfferDao;
+import com.oorni.model.Carousel;
 import com.oorni.model.Merchant;
 import com.oorni.model.Offer;
 import com.oorni.model.OfferLabel;
@@ -285,5 +294,124 @@ public class OfferManagerImpl extends GenericManagerImpl<Offer, Long> implements
 	public List<String> getSuggestLabels(String label)
 			throws OorniException {
 		return offerDao.getSuggestLabels(label);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 */
+	public Carousel saveCarousel(Carousel carousel, CommonsMultipartFile file,
+			String uploadDir) throws OorniException {
+		if (file != null && !file.isEmpty()) {
+			// the directory to upload to
+			uploadDir += Constants.FILE_SEP + "carousel" + Constants.FILE_SEP
+					+ new Date() + Constants.FILE_SEP;
+			// Create the directory if it doesn't exist
+			File dirPath = new File(uploadDir);
+			if (!dirPath.exists()) {
+				dirPath.mkdirs();
+			}
+			// retrieve the file data
+			InputStream stream;
+			try {
+				stream = file.getInputStream();
+				// write the file to the file specified
+				OutputStream bos = new FileOutputStream(
+						uploadDir
+								+ carousel.getCarouselTitle().substring(0,100).toLowerCase().replaceAll(" ",
+										"-")
+								+ "."
+								+ FilenameUtils.getExtension(file
+										.getOriginalFilename()));
+				int bytesRead;
+				byte[] buffer = new byte[8192];
+				while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
+					bos.write(buffer, 0, bytesRead);
+				}
+				bos.close();
+				// close the stream
+				stream.close();
+				String imagePath = Constants.FILE_SEP;
+				if (uploadDir.contains("files")) {
+					imagePath = imagePath + "files";
+				} else if (uploadDir.contains("images")) {
+					imagePath = imagePath + "images";
+				}
+				imagePath = imagePath
+						+ Constants.FILE_SEP
+						+ "carousel"
+						+ Constants.FILE_SEP
+						+ new Date()
+						+ Constants.FILE_SEP
+						+ carousel.getCarouselTitle().substring(0,100).toLowerCase().replaceAll(" ", "-")
+						+ "."
+						+ FilenameUtils
+								.getExtension(file.getOriginalFilename());
+				carousel.setImagePath(imagePath);
+			} catch (IOException e) {
+				throw new OorniException("problem in saving logo...");
+			}
+		}
+		
+		if (!StringUtil.isEmptyString(carousel.getLabelsString())) {
+			List<String> labelsString = new ArrayList<String>();
+			String[] labelsArray = carousel.getLabelsString().split(",");
+			for (int i = 0; i < labelsArray.length; i++) {
+				String label = labelsArray[i].trim();
+				labelsString.add(label);
+			}
+			List<OfferLabel> carouselLabels = offerDao
+					.getOfferLabels(labelsString);
+			for (String label : labelsString) {
+				boolean isNotExists = true;
+				OfferLabel newLabelObj = null;
+				for (OfferLabel labelObj : carouselLabels) {
+					if (label.equalsIgnoreCase(labelObj.getLabel())) {
+						isNotExists = false;
+						newLabelObj = labelObj;
+						break;
+					}
+				}
+				if (isNotExists) {
+					if (!StringUtil.isEmptyString(label.trim())) {
+						OfferLabel carouselLabel = new OfferLabel(label.trim());
+						Merchant merchant = merchantManager
+								.getMerchantByName(label.trim());
+						if (merchant != null) {
+							carousel.setMerchantName(merchant.getMerchantName());
+						}
+						carouselLabel = saveOfferLabel(carouselLabel);
+						carousel.getLabels().add(carouselLabel);
+					}
+				} else {
+					carousel.getLabels().add(newLabelObj);
+				}
+			}
+		}
+		Calendar now = new GregorianCalendar();
+		if (StringUtil.isEmptyString(carousel.getCarouselId())) {
+			carousel.setCreatedOn(now);
+			carousel.setCreatedBy(CommonUtil.getLoggedInUserName());
+		}
+		carousel.setUpdatedOn(now);
+		carousel.setUpdatedBy(CommonUtil.getLoggedInUserName());
+		return offerDao.saveCarousel(carousel);
+	}
+	
+	public Carousel getCarouselById(Long carouselId) throws OorniException {
+		return offerDao.getCarouselById(carouselId);
+	}
+	
+	public List<Carousel> getAllCarousels() throws OorniException {
+		return offerDao.getAllCarousels();
+	}
+	
+    public List<Carousel> getActiveCarousels() throws OorniException {
+    	return offerDao.getActiveCarousels();
+    }
+	
+	public List<Carousel> getCarouselsByLabels(List<String> labels) 
+			throws OorniException {
+		return offerDao.getCarouselsByLabels(labels);
 	}
 }

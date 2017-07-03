@@ -89,7 +89,8 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 		report.setConversionIp(CommonUtil.getUserIP());
 		if(!StringUtil.isEmptyString(storeName)){
 			User owner = getOwnerByStoreName(storeName);
-			report.setOwner(owner);
+			report.setStore(owner.getStore());
+			report.setStoreOwner(owner);
 		}
 		report.setEnabled(true);
 		String targetLink = merchant.getTargetURL();
@@ -126,7 +127,8 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 		report.setConversionIp(CommonUtil.getUserIP());
 		if(!StringUtil.isEmptyString(storeId)){
 			User owner = getOwnerByStoreId(storeId);
-			report.setOwner(owner);
+			report.setStore(owner.getStore());
+			report.setStoreOwner(owner);
 		}
 		report.setEnabled(true);
 		String targetLink = offer.getTargetURL();

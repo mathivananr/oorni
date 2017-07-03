@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp"%>
 <% pageContext.setAttribute("newLine", "\n"); %>
-<div id="offers-container" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div id="offers-container" class="offers-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<input type="hidden" id="label" value="${label}"/>
 	<input type="hidden" id="pageNo" value="${pageNo}" />
 	<div class="card card-block">
@@ -10,7 +10,8 @@
 	</div>
 	<div class="" id="offersList">
 		<c:forEach var="offer" items="${offers}">
-			<div class="card card-block">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 card card-block">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div id="offer-left" class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
 						<div id="offer-image" class="offer-image">
 							<c:choose>
@@ -69,6 +70,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
 					</div>
+				</div>
 			</div>
 		</c:forEach>
 	</div>
@@ -101,3 +103,19 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(function(){
+		var label = window.location.pathname;
+		if(label) {
+			var labels = label.split('/');
+			if(labels.length <=3) {
+				if(labels[1] == '') {
+					loadCarousel('home');
+				} else {
+					loadCarousel(labels[1]);
+				}
+			}
+		}
+	});
+</script>

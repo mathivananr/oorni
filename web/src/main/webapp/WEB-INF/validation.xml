@@ -29,9 +29,9 @@
             </field>
         </form>
         <form name="user">
-            <field property="username" depends="required">
+            <!-- <field property="username" depends="required">
                 <arg key="user.username"/>
-            </field>
+            </field> -->
             <!-- <field property="firstName" depends="required">
                 <arg key="user.firstName"/>
             </field>

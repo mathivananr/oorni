@@ -21,5 +21,6 @@
 		<mapping class="com.oorni.model.Report" />
 		<mapping class="com.oorni.model.Payment" />
 		<mapping class="com.oorni.model.AppLog" />
+		<mapping class="com.oorni.model.Carousel" />
 	</session-factory>
 </hibernate-configuration>

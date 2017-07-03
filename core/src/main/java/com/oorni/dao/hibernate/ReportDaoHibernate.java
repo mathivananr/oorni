@@ -59,7 +59,8 @@ public class ReportDaoHibernate extends GenericDaoHibernate<Report, Long> implem
 		List<Report> reports = getSession().createCriteria(Report.class).add(Restrictions.eq("reportId", reportId))
 				.list();
 		if (reports != null && reports.size() > 0) {
-			reports.get(0).getOwner().getStore();
+			reports.get(0).getStoreOwner().getStore();
+			reports.get(0).getStore();
 			return reports.get(0);
 		} else {
 			throw new OorniException("No Report found for id " + reportId);
@@ -73,10 +74,10 @@ public class ReportDaoHibernate extends GenericDaoHibernate<Report, Long> implem
 	 */
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Report> getReportByOwnerId(String ownerId) throws OorniException {
+	public List<Report> getReportByOwnerId(String storeOwnerId) throws OorniException {
 		try {
 			List<Report> reports = getSession().createCriteria(Report.class)
-					.add(Restrictions.eq("owner.id", Long.parseLong(ownerId))).list();
+					.add(Restrictions.eq("storeOwner.id", Long.parseLong(storeOwnerId))).list();
 			if (reports != null && reports.size() > 0) {
 				return reports;
 			} else {
@@ -93,11 +94,11 @@ public class ReportDaoHibernate extends GenericDaoHibernate<Report, Long> implem
 	 * @throws OorniException
 	 */
 	@Transactional
-	public Long getClicksCount(Calendar from, Calendar to, String ownerId) throws OorniException {
+	public Long getClicksCount(Calendar from, Calendar to, String storeOwnerId) throws OorniException {
 		Criteria criteria = getSession().createCriteria(Report.class);
 		criteria.setProjection(Projections.rowCount());
-		if (!StringUtil.isEmptyString(ownerId)) {
-			criteria.add(Restrictions.eq("owner.id", Long.parseLong(ownerId)));
+		if (!StringUtil.isEmptyString(storeOwnerId)) {
+			criteria.add(Restrictions.eq("storeOwner.id", Long.parseLong(storeOwnerId)));
 		}
 		Long clicks = (Long) criteria.uniqueResult();
 		return clicks;
@@ -109,12 +110,12 @@ public class ReportDaoHibernate extends GenericDaoHibernate<Report, Long> implem
 	 * @throws OorniException
 	 */
 	@Transactional
-	public Long getConversionCount(Calendar from, Calendar to, String ownerId) throws OorniException {
+	public Long getConversionCount(Calendar from, Calendar to, String storeOwnerId) throws OorniException {
 		Criteria criteria = getSession().createCriteria(Report.class);
 		criteria.setProjection(Projections.rowCount());
 		criteria.add(Restrictions.eq("status", Constants.STATUS_CONVERSION)).uniqueResult();
-		if (!StringUtil.isEmptyString(ownerId)) {
-			criteria.add(Restrictions.eq("owner.id", Long.parseLong(ownerId)));
+		if (!StringUtil.isEmptyString(storeOwnerId)) {
+			criteria.add(Restrictions.eq("storeOwner.id", Long.parseLong(storeOwnerId)));
 		}
 		Long conversions = (Long) criteria.uniqueResult();
 		return conversions;
@@ -126,11 +127,11 @@ public class ReportDaoHibernate extends GenericDaoHibernate<Report, Long> implem
 	 * @throws OorniException
 	 */
 	@Transactional
-	public Double getTotalPayout(Calendar from, Calendar to, String ownerId) throws OorniException {
+	public Double getTotalPayout(Calendar from, Calendar to, String storeOwnerId) throws OorniException {
 		Criteria criteria = getSession().createCriteria(Report.class);
 		criteria.setProjection(Projections.sum("payout"));
-		if (!StringUtil.isEmptyString(ownerId)) {
-			criteria.add(Restrictions.eq("owner.id", Long.parseLong(ownerId)));
+		if (!StringUtil.isEmptyString(storeOwnerId)) {
+			criteria.add(Restrictions.eq("storeOwner.id", Long.parseLong(storeOwnerId)));
 		}
 		Double sum = (Double) criteria.uniqueResult();
 		return sum;

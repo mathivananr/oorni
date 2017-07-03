@@ -49,4 +49,18 @@ public class CommonController extends BaseFormController {
 		Model model = new ExtendedModelMap();
 		return new ModelAndView("/site/faq", model.asMap());
 	}
+	
+	@RequestMapping(value = "/cashback", method = RequestMethod.GET)
+	public ModelAndView showCashbackPage(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		return new ModelAndView("/cashback", model.asMap());
+	}
+	
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public ModelAndView showChatPage(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		return new ModelAndView("/chat", model.asMap());
+	}
 }

@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oorni.common.OorniException;
 import com.oorni.dao.OfferDao;
+import com.oorni.model.Carousel;
 import com.oorni.model.Offer;
 import com.oorni.model.OfferLabel;
 import com.oorni.util.StringUtil;
@@ -43,6 +44,14 @@ public class OfferDaoHibernate extends GenericDaoHibernate<Offer, Long>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Transactional
+	public Carousel saveCarousel(Carousel carousel) throws OorniException{
+		return (Carousel) getSession().merge(carousel);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Offer> getAllOffers() throws OorniException {
@@ -53,6 +62,70 @@ public class OfferDaoHibernate extends GenericDaoHibernate<Offer, Long>
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Carousel> getAllCarousels() throws OorniException {
+		try {
+			return getSession().createCriteria(Carousel.class).list();
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Carousel> getActiveCarousels() throws OorniException {
+		try {
+			return getSession().createCriteria(Carousel.class).add(Restrictions.eq("enabled", true)).list();
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Carousel> getCarouselsByLabels(List<String> labels)
+			throws OorniException {
+		try {
+			String queryString = "select carousel from Carousel as carousel";
+			String queryAlies = "";
+			String queryCondition = "";
+			String queryLimit = "";
+			for (int i = 1; i <= labels.size(); i++) {
+				queryAlies = queryAlies + " join carousel.labels as offerLabel"
+						+ i;
+			}
+			int count = 1;
+			for (String label : labels) {
+				if (queryCondition.length() == 0 ) {
+					queryCondition = " where offerLabel" + count + ".label='"
+							+ label + "'";
+				} else {
+					queryCondition = queryCondition + " and offerLabel" + count
+							+ ".label='" + label + "'";
+				}
+				count++;
+			}
+			
+			if (queryCondition.length() == 0 ) {
+				queryCondition = " where carousel.enabled = true";
+			} else {
+				queryCondition = queryCondition + " and carousel.enabled = true";
+			}
+			queryLimit = " order by carousel.carouselId desc";
+			Query query = getSession().createQuery(
+					queryString + queryAlies + queryCondition + queryLimit);
+			return (List<Carousel>) query.list();
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -292,5 +365,22 @@ public class OfferDaoHibernate extends GenericDaoHibernate<Offer, Long>
 	@Transactional
 	public OfferLabel saveOfferLabel(OfferLabel offerLabel) throws OorniException {
 		return (OfferLabel) getSession().merge(offerLabel);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public Carousel getCarouselById(Long carouselId) throws OorniException {
+		List<Carousel> carousels = getSession().createCriteria(Carousel.class)
+				.add(Restrictions.eq("carouselId", carouselId)).list();
+		if (carousels != null && carousels.size() > 0) {
+			return carousels.get(0);
+		} else {
+			throw new OorniException("No carousel found for id " + carouselId);
+		}
 	}
 }

@@ -3,7 +3,12 @@ package com.oorni.dao;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.oorni.common.OorniException;
+import com.oorni.model.Carousel;
 import com.oorni.model.Offer;
 import com.oorni.model.OfferLabel;
 
@@ -39,5 +44,16 @@ public interface OfferDao extends GenericDao<Offer, Long> {
 			throws OorniException;
 
 	List<String> getSuggestLabels(String label)
+			throws OorniException;
+	
+	Carousel saveCarousel(Carousel carousel) throws OorniException;
+	
+	Carousel getCarouselById(Long carouselId) throws OorniException;
+	
+	List<Carousel> getAllCarousels() throws OorniException;
+	
+    List<Carousel> getActiveCarousels() throws OorniException;
+	
+	List<Carousel> getCarouselsByLabels(List<String> labels)
 			throws OorniException;
 }

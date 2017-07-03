@@ -4,12 +4,15 @@
 <title><fmt:message key="offer.title" /></title>
 </head>
 
-<div class="col-sm-2">
+<div class="container">
+<div class="col-sm-12">
 	<h2>
 		<fmt:message key="offer.heading" />
 	</h2>
+	<hr/>
 </div>
-<div class="col-sm-7">
+
+<div class="col-sm-12 pull-right">
 	<spring:bind path="offer.*">
 		<c:if test="${not empty status.errorMessages}">
 			<div class="alert alert-danger alert-dismissable">
@@ -92,22 +95,22 @@
 		</div>
 		
 		<div class="row">
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary" name="save"
-					onclick="bCancel=false">
-					<i class="icon-ok icon-white"></i>
-					<fmt:message key="button.save" />
-				</button>
+			<div class="form-group pull-right">
 				<button type="button" class="btn btn-default" name="cancel"
 					onclick="bCancel=true">
 					<i class="icon-remove"></i>
 					<fmt:message key="button.cancel" />
 				</button>
+				<button type="submit" class="btn btn-primary" name="save"
+					onclick="bCancel=false">
+					<i class="icon-ok icon-white"></i>
+					<fmt:message key="button.save" />
+				</button>
 			</div>
 		</div>
 	</form:form>
 </div>
-
+</div>
 <script type="text/javascript">
     $(function () {
         $('#offerEnd').datetimepicker({

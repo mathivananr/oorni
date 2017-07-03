@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oorni.Constants;
 import com.oorni.common.OorniException;
+import com.oorni.model.Carousel;
 import com.oorni.model.Offer;
 import com.oorni.model.OfferLabel;
 import com.oorni.service.MerchantManager;
@@ -324,4 +327,79 @@ public class OfferController extends BaseFormController {
 		return new ModelAndView("/oorni/offers", model.asMap());
 	}
 
+	@RequestMapping(value = "/admin/add-carousel", method = RequestMethod.GET)
+	public ModelAndView showCarouselForm(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		model.addAttribute("activeMenu", "carousel-link");
+		model.addAttribute("carousel", new Carousel());
+		model.addAttribute(Constants.MERCHANT_LIST, merchantManager.getAllMerchant());
+		return new ModelAndView("/oorni/carousel", model.asMap());
+	}
+
+	@RequestMapping(value = "/admin/edit-carousel", method = RequestMethod.GET)
+	public ModelAndView editCarousel(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		String carouselId = request.getParameter("carouselId");
+		Model model = new ExtendedModelMap();
+		model.addAttribute("activeMenu", "offer-link");
+		model.addAttribute("carousel",
+				offerManager.getCarouselById(Long.parseLong(carouselId)));
+		return new ModelAndView("/oorni/carousel", model.asMap());
+	}
+	
+	@RequestMapping(value = "/admin/add-carousel", method = RequestMethod.POST)
+	@ModelAttribute
+	public ModelAndView addCarousel(@ModelAttribute("carousel") Carousel carousel,
+			BindingResult errors, final HttpServletRequest request,
+			final HttpServletResponse response) {
+		Model model = new ExtendedModelMap();
+		try {
+			log.info("adding carousel :: " + carousel.getCarouselTitle());
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest
+					.getFile("file");
+			String uploadDir = getServletContext().getRealPath("/files");
+			if(StringUtil.isEmptyString(uploadDir)) {
+				uploadDir = getServletContext().getRealPath("/images");
+			}
+			carousel = offerManager.saveCarousel(carousel, file, uploadDir);
+			model.addAttribute("carousel", carousel);
+			log.info("carousel added");
+			model.addAttribute("activeMenu", "carousel-link");
+			model.addAttribute("carouselList", offerManager.getAllCarousels());
+			saveMessage(request, "carousel added successfully");
+			model.addAttribute("activeMenu", "carousel-link");
+			return new ModelAndView("redirect:/admin/carousel-list");
+		} catch (OorniException e) {
+			e.printStackTrace();
+			saveError(request, "problem in adding carousel");
+			model.addAttribute("carousel", carousel);
+			return new ModelAndView("/oorni/carousel-list", model.asMap());
+		}
+	}
+
+	@RequestMapping(value = "/admin/carousel-list", method = RequestMethod.GET)
+	public ModelAndView getCarousels(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		model.addAttribute("activeMenu", "carousel-link");
+		model.addAttribute("carouselList", offerManager.getAllCarousels());
+		return new ModelAndView("/oorni/carousel-list", model.asMap());
+	}
+	
+	@RequestMapping(value = "/carousel/{label}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<Carousel> getCarousels(final HttpServletRequest request,
+			final HttpServletResponse response, @PathVariable("label") String label) throws OorniException {
+		log.info("getting carousels for :: " + label);
+		List<String> labels = new ArrayList<String>();
+		if (!StringUtil.isEmptyString(label)) {
+			if (label.contains("-")) {
+				labels.addAll(Arrays.asList(label.split("-")));
+			} else {
+				labels.add(label);
+			}
+		}
+		return offerManager.getCarouselsByLabels(labels);
+	}
 }

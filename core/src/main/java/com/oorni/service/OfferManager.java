@@ -5,8 +5,11 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.oorni.common.OorniException;
+import com.oorni.model.Carousel;
+import com.oorni.model.Merchant;
 import com.oorni.model.Offer;
 import com.oorni.model.OfferLabel;
 
@@ -50,5 +53,17 @@ public interface OfferManager extends GenericManager<Offer, Long> {
 			throws OorniException;
 	
 	List<String> getSuggestLabels(String label)
+			throws OorniException;
+	
+	Carousel saveCarousel(Carousel carousel, CommonsMultipartFile file,
+			String uploadDir) throws OorniException;
+	
+	Carousel getCarouselById(Long carouselId) throws OorniException;
+	
+	List<Carousel> getAllCarousels() throws OorniException;
+	
+    List<Carousel> getActiveCarousels() throws OorniException;
+	
+	List<Carousel> getCarouselsByLabels(List<String> labels)
 			throws OorniException;
 }

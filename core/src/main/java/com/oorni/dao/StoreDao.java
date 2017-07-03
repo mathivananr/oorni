@@ -8,7 +8,7 @@ import com.oorni.model.User;
 
 public interface StoreDao extends GenericDao<Store, Long> {
 
-	Store saveStore(Store store);
+	Store saveStore(Store store) throws OorniException;
 
 	List<Store> getAllStore();
 

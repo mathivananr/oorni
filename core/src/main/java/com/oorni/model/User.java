@@ -63,6 +63,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
     private String lastName;                    // required
     private String email;                       // required; unique
     private String phoneNumber;
+    private String mobileNumber;
     private String website;
     private Address address = new Address();
     private Integer version;
@@ -314,7 +315,16 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setWebsite(String website) {
+    @Column(name = "mobile_number")
+    public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public void setWebsite(String website) {
         this.website = website;
     }
 

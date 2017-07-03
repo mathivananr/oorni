@@ -11,10 +11,10 @@
     </div>
 </c:if>
 
-<div class="col-sm-10">
+<div class="col-sm-12">
     <h2><fmt:message key="offerList.heading"/></h2>
-
-    <form method="get" action="${ctx}/offers" id="searchForm" class="form-inline">
+	<hr/>
+    <%-- <form method="get" action="${ctx}/offers" id="searchForm" class="form-inline">
     <div id="search" class="text-right">
         <span class="col-sm-9">
             <input type="text" size="20" name="q" id="query" value="${param.q}"
@@ -24,7 +24,7 @@
             <i class="icon-search"></i> <fmt:message key="button.search"/>
         </button>
     </div>
-    </form>
+    </form> --%>
 
     <div id="actions" class="btn-group">
         <a class="btn btn-primary" href="<c:url value='/user/add-offer?method=Add&from=list'/>">

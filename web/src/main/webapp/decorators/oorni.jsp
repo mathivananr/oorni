@@ -15,7 +15,7 @@
 <!-- Store Title -->
 <c:choose>
 	<c:when test="${not empty storeTitle}">
-		<title>${storeTitle}</title>	
+		<title>${storeTitle}</title>
 	</c:when>
 	<c:otherwise>
 		<title>${appTitle}</title>
@@ -52,20 +52,31 @@
 <link rel="icon" href="/images/favicon.ico" />
 <link rel="stylesheet" type="text/css"
 	href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="${storeContext.request.contextPath}/styles/core/main.css" />
-	
+
 <link rel="stylesheet" type="text/css"
 	href="${storeContext.request.contextPath}/styles/core/typeahead.css" />
 <!-- Essential jQuery Plugins
 ================================================== -->
 <script type="text/javascript"
 	src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
-	<script type="text/javascript" src="${storeContext.request.contextPath}/scripts/core/custom.js"></script>
-	<!-- <script type='text/javascript' src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
+<script type="text/javascript"
+	src="${storeContext.request.contextPath}/scripts/core/custom.js"></script>
+<!-- <script type='text/javascript' src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
 </head>
 
 <body id="body">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<input type="hidden" id="active-menu" value="${activeMenu}" />
 	<input type="hidden" id="scrollReached" value="false" />
 	<!-- preloader -->
@@ -76,23 +87,22 @@
 
 	<!--         Fixed Navigation
         ==================================== -->
-    
+
 	<header id="navigation" class="navbar">
 		<!-- <div class="container"> -->
-		
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-			<div class="search-row">
-				<a class="navbar-brand" href="${applicationUrl}">
-					
-				</a>
+
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+			<div class="search-row" >
+				<a class="navbar-brand" href="/" style="margin-top:5px;"><h1>oorni</h1></a>
 			</div>
 		</div>
-		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-8 ">
-			<div class="dtable hw100">
+		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 ">
+			<!-- <div class="dtable hw100">
 				<div class="dtable-cell hw100">
 					<div class="text-center">
 						<div class="search-row animated fadeInUp">
-							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9 search-col relative">
+							<div
+								class="col-lg-10 col-md-10 col-sm-10 col-xs-9 search-col relative">
 								<i class="icon-docs icon-append"></i> <input type="text"
 									name="search" id="search" class="form-control has-icon"
 									placeholder="Search">
@@ -105,101 +115,121 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
-		
-		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-			<div class="search-row" role="navigation">
+
+		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+			<div class="search-row pull-right" role="navigation" style="padding-right:20px;">
+				<security:authentication var="user" property="principal" />
 				<ul class="nav nav-pills">
-				  <li class="nav-item">
-				    <a class="nav-link" href="/chat">
-							<i class="fa fa-comment" aria-hidden="true"></i>
+					<c:choose>
+						<c:when
+							test="${user != null && user != 'anonymousUser' && user.store != null && user.store.storeName != null && user.store.storeName != ''}">
+							<li class="nav-item"><a class="nav-link" href="/store/${user.store.storeName}"> 
+								<i class="fa fa-th-large" aria-hidden="true"></i>
+								<p>View Store</p>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link" href="/createStore"> 
+								<i class="fa fa-th-large" aria-hidden="true"></i>
+								<p>Create Store</p>
+								</a>
+							</li>
+							<li class="nav-item text-center"><a class="nav-link" href="/cashback"> <i
+									class="fa fa-inr" aria-hidden="true"></i>
+									<p>Shop & Earn</p>
+							</a></li>
+						</c:otherwise>
+					</c:choose>
+					
+					<li class="nav-item"><a class="nav-link" href="/chat"> <i
+							class="fa fa-comment" aria-hidden="true"></i>
 							<p>Chat</p>
-						</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="/offers">
-							<i class="fa fa-refresh" aria-hidden="true"></i>
+					</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" href="/offers"> <i
+							class="fa fa-refresh" aria-hidden="true"></i>
 							<p>Offers</p>
-						</a>
-				  </li>
-				  <li class="nav-item dropdown">
-				  	<!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+					</a></li> -->
+					<li class="nav-item dropdown">
+						<!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Action</a>
 				      <a class="dropdown-item" href="#">Another action</a>
 				      <a class="dropdown-item" href="#">Something else here</a>
 				      <div class="dropdown-divider"></div>
 				      <a class="dropdown-item" href="#">Separated link</a>
-				    </div> -->
-				    <!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				    </div> --> <!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 				    	<i class="fa fa-user" aria-hidden="true"></i>
-				    </a> -->
-				    <a id="account-menu" href="#account" class="nav-link dropdown-toggle" data-toggle="dropdown">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<i class="fa fa-sort-desc" aria-hidden="true"></i>
+				    </a> --> <a id="account-menu" href="#account"
+						class="nav-link dropdown-toggle" data-toggle="dropdown"> <i
+							class="fa fa-user" aria-hidden="true"></i> <i
+							class="fa fa-sort-desc" aria-hidden="true"></i>
 							<p>Account</p>
-						</a>
-                        <ul class="dropdown-menu" id="account-menus">
-							<security:authentication var="user" property="principal" />
+					</a>
+						<ul class="dropdown-menu" id="account-menus">
 							<c:choose>
 								<c:when test="${user != null && user != 'anonymousUser'}">
 									<li>
-											<span>Welcome <b>${user.username}</b></span>
+										<span>Welcome 
+											<b>
+												<c:choose>
+												    <c:when test="${empty user.firstName || empty user.lastName}">
+												    	 ${user.username}
+												    </c:when>
+												    <c:otherwise>
+												    	${user.fullName}
+												    </c:otherwise>
+												</c:choose>
+											</b>
+										</span>
 									</li>
 									<li class="dropdown-divider"></li>
-									<li>
-											<a href="/userform" >Edit Profile</a>
-									</li>
+									<li><a href="/userform">Edit Profile</a></li>
 									<li class="dropdown-divider"></li>
+									<c:if test="${pageContext.request.remoteUser == user.username}">
+						           		<li>
+						           			<a href="<c:url value="/updatePassword" />"><fmt:message key='updatePassword.changePasswordLink'/></a>
+						               	</li>
+						               	<li class="dropdown-divider"></li>
+						            </c:if>
 									<c:choose>
-										<c:when test="${user.store.storeName != null && user.store.storeName != ''}">
-											<li>
-												<a href="/store/${user.store.storeName}" >View Store</a>													
-											</li>
+										<c:when
+											test="${user.store.storeName != null && user.store.storeName != ''}">
+											<li><a href="/store/${user.store.storeName}">View
+													Store</a></li>
 											<li class="dropdown-divider"></li>
-											<li>
-												<a href="/user/editStore" >Edit Store</a>													
-											</li>
+											<li><a href="/user/editStore">Edit Store</a></li>
 											<li class="dropdown-divider"></li>
-											<li>
-												<a href="/user/report" >Report</a>
-											</li>
+											<li><a href="/user/report">Revenue Report</a></li>
 										</c:when>
 										<c:otherwise>
-											<li>
-												<a href="/user/createStore" >Create Store</a>
-											</li>	
+											<li><a href="/user/createStore">Create Store</a></li>
 										</c:otherwise>
 									</c:choose>
 									<li class="dropdown-divider"></li>
-									<li>
-											<a href="/user/offer-list" >Offers</a>
-									</li>
+									<!-- <li><a href="/user/offer-list">Offers</a></li>
 									<li class="dropdown-divider"></li>
-									<li>
-											<a href="/user/add-offer" >Add Offer</a>
-									</li>
-									<li class="dropdown-divider"></li>
-									<li>
-											<a class="btn btn-default" href="/logout">Logout</a>
-									</li>
+									<li><a href="/user/add-offer">Add Offer</a></li>
+									<li class="dropdown-divider"></li> -->
+									<li><a class="btn btn-default" href="/logout">Logout</a></li>
 								</c:when>
 								<c:otherwise>
 									<li>
 										<div class="text-center text-xs-center">
-											<div id="login-link" class="btn btn-secondary" data-toggle="modal"
-												data-target="#myModal" href="#myModal">Login</div>
+											<div id="login-link" class="btn btn-secondary"
+												data-toggle="modal" data-target="#myModal" href="#myModal">Login</div>
 										</div>
 									</li>
 									<li><div class="account-signup">
-											New User? <a data-toggle="modal"
-												data-target="#myModal" href="#myModal">Register</a>
+											New User? <a data-toggle="modal" data-target="#myModal"
+												href="#myModal">Register</a>
 										</div>
 								</c:otherwise>
 							</c:choose>
 						</ul>
-				  </li>
+					</li>
 				</ul>
 				<%-- <ul id="nav" class="nav nav-pills">
 					<li class="text-center">
@@ -283,67 +313,79 @@
 				</ul> --%>
 			</div>
 		</div>
-		
+
 		<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    	<div class="row">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Login</h4>
-          </div>
-          <div class="modal-body">
-                  <div class="col-xs-6">
-                      <div class="well">
-                          <form id="loginForm" novalidate="novalidate" method="post" action="<c:url value='/j_security_check'/>">
-                              <div class="form-group">
-                                  <label for="username" class="control-label">Username</label>
-                                  <input type="text" class="form-control" id="j_username" name="j_username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div class="form-group">
-                                  <label for="password" class="control-label">Password</label>
-                                  <input type="password" class="form-control" id="j_password" name="j_password" value="" required="" title="Please enter your password">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
-                              <button type="submit" class="btn btn-success btn-block">Login</button>
-                          </form>
-                      </div>
-                  </div>
-                  <div class="col-xs-6">
-                  		<div class="well">
-                          <form id="signupForm" method="post" action="signup" novalidate="novalidate">
-                              <div class="form-group">
-                                  <label for="username" class="control-label">Username</label>
-                                  <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="username">
-                                  <span class="help-block"></span>
-                              </div>
-                              
-                              <div class="form-group">
-                                  <label for="password" class="control-label">Password</label>
-                                  <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password" placeholder="password">
-                                  <span class="help-block"></span>
-                              </div>
-                              
-                              <div class="form-group">
-                                  <label for="email" class="control-label">Email</label>
-                                  <input type="text" class="form-control" id="email" name="email" value="" required="" title="Please enter you email" placeholder="example@gmail.com">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
-                              <button type="submit" class="btn btn-danger btn-block">Signup</button>
-                          </form>
-                      </div>
-                  </div>
-          </div>
-      </div>
-	</div>
-  </div>
-</div>
-  
-		
+		<div id="myModal" class="modal fade" role="dialog" >
+			<div class="modal-dialog">
+				<div class="modal-content row" style="padding-bottom:20px;">
+					<!-- <div class="row">
+						<div class="modal-header" style="padding:0; padding-right:10px;border:0;">
+							
+							<h4 class="modal-title" id="myModalLabel">Login</h4>
+						</div> -->
+						<div class="modal-body" style="padding:0;padding-top:5px;">
+							<div class="col-xs-6">
+								<h3 class="modal-title text-center" id="myModalLabel">Login</h3>
+								<hr style="margin-right:10%;">
+								<div class="" style="padding-right:30px; border:0; border-right:1px solid #ccc;">
+									<form id="loginForm" novalidate="novalidate" method="post"
+										action="<c:url value='/j_security_check'/>">
+										<div class="form-group">
+											<input type="text" class="form-control input-border-bottom" id="j_username"
+												name="j_username" value="" required
+												title="Please enter you username"
+												placeholder="example@gmail.com"> <span
+												class="help-block"></span>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control input-border-bottom" id="j_password"
+												name="j_password" value="" required
+												title="Please enter your password" placeholder="password"> <span
+												class="help-block"></span>
+										</div>
+										<div id="loginErrorMsg" class="alert alert-error" style="display:none">Wrong
+											username or password</div>
+										<button type="submit" class="btn btn-success btn-block">Login</button>
+									</form>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<button type="button" class="close pull-right" data-dismiss="modal">
+									<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+								</button>
+								<h3 class="modal-title text-center" id="myModalLabel">Signup</h3>
+								<hr>
+								<div class="" >
+									<form id="signupForm" method="post" action="signup"
+										novalidate="novalidate">
+										<div class="form-group">
+											<input
+												type="text" class="form-control input-border-bottom" id="email" name="email"
+												value="" required title="Please enter you email"
+												placeholder="example@gmail.com"> <span
+												class="help-block"></span>
+										</div>
+
+										<div class="form-group">
+											<input type="password" class="form-control input-border-bottom" id="password"
+												name="password" value="" required
+												title="Please enter your password" placeholder="password">
+											<span class="help-block"></span>
+										</div>
+
+										<div id="loginErrorMsg" class="alert alert-error" style="display:none">Wrong
+											username og password</div>
+										<button type="submit" class="btn btn-danger btn-block">Signup</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 hide">
 			<!-- <nav class='sidebar sidebar-menu-collapsed'> 
 				<a href='javascript void(0);' id='justify-icon'>
@@ -467,18 +509,62 @@
 
 	<!--        End Fixed Navigation
         ==================================== -->
-	
+
 	<!--        Main Content
         ==================================== -->
-    
+
 	<section id="works" class="works clearfix">
 		<div class="project-wrapper">
-			<div class="container" >
+				
+				<!-- <div id="container" class="container" style="">
+					<iframe src="https://www4.cbox.ws/box/?boxid=4335407&boxtag=quNgnE" width="100%" height="450" allowtransparency="yes" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>	
+				</div> -->
+				<!-- <div class="card">
+							<div class="card-block">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<div class="">
+							<div class="card-block">
+								<h4 class="card-title">1.Login</h4>
+								<p class="card-text">login</p>
+								<a href="#" class="btn btn-primary">Login</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<div class="">
+							<div class="card-block">
+								<h4 class="card-title">2.Create Store</h4>
+								<p class="card-text">create store</p>
+								<a href="#" class="btn btn-primary">Create Store</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<div class="">
+							<div class="card-block">
+								<h4 class="card-title">3.Share with friends</h4>
+								<p class="card-text">share the store with your friends</p>
+								<a href="#" class="btn btn-primary">Share with friends</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<div class="">
+							<div class="card-block">
+								<h4 class="card-title">4.Get money</h4>
+								<p class="card-text">get cashback whenever someone click and purchase from your store links.</p>
+								<a href="#" class="btn btn-primary">Get money</a>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div> -->
+			<!-- <div class="container"> -->
 				<%@ include file="/common/messages.jsp"%>
 				<div class="mb50" id="main-content">
 					<decorator:body />
 				</div>
-			</div>
+			<!-- </div> -->
 		</div>
 	</section>
 	<!--        Main Content
@@ -489,59 +575,58 @@
 	<footer id="footer" class="footer">
 		<div class="container">
 			<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="footer-single">
-						<!-- <img src="images/core/footer-logo.png" alt=""> -->
-						<h2>
-							<a title="${applicationName} home" href="${applicationUrl}">${applicationName}</a>
-						</h2>
-					</div>
+				<div class="footer-single">
+					<!-- <img src="images/core/footer-logo.png" alt=""> -->
+					<h2>
+						<a title="${applicationName} home" href="${applicationUrl}">${applicationName}</a>
+					</h2>
+				</div>
 			</div>
 			<div class="col-md-9 col-sm-6 col-xs-12">
-					<div class="text-center">
-						<a title="about menu" href="${applicationUrl}/site/about">About</a>
-						| <a title="contact menu" href="${applicationUrl}/site/contact">Contact</a>
-						| <a title="terms and conditions menu"
-							href="${applicationUrl}/site/termsAndConditions">Terms and
-							Conditions</a> | <a title="privacy policy menu"
-							href="${applicationUrl}/site/privacyPolicy">Privacy Policy</a> |
-						<a title="faq menu" href="${applicationUrl}/site/faq">FAQ</a>
-					</div>
-					<p class="text-center">
-						Copyright <i class="fa fa-copyright"></i> 2016 <a
-							title="copy rights" href="${applicationUrl}/">${applicationName}</a>. All
-						rights reserved. Designed & developed by <a title="developed by"
-							href="${applicationUrl}/">${applicationName}</a>
-					</p>
+				<div class="text-center">
+					<a title="about menu" href="${applicationUrl}/site/about">About</a>
+					| <a title="contact menu" href="${applicationUrl}/site/contact">Contact</a>
+					| <a title="terms and conditions menu"
+						href="${applicationUrl}/site/termsAndConditions">Terms and
+						Conditions</a> | <a title="privacy policy menu"
+						href="${applicationUrl}/site/privacyPolicy">Privacy Policy</a> | <a
+						title="faq menu" href="${applicationUrl}/site/faq">FAQ</a>
+				</div>
+				<p class="text-center">
+					Copyright <i class="fa fa-copyright"></i> 2016 <a
+						title="copy rights" href="${applicationUrl}/">${applicationName}</a>.
+					All rights reserved. Designed & developed by <a
+						title="developed by" href="${applicationUrl}/">${applicationName}</a>
+				</p>
 			</div>
 		</div>
 	</footer>
 	<!--         End Footer
         ==================================== -->
-        
+
 	<a href="javascript:void(0);" id="back-top"><i
 		class="fa fa-angle-up fa-3x"></i></a>
 </body>
 <script type="text/javascript">
-
 	// Instantiate the Bloodhound suggestion engine
 	var labeldata = new Bloodhound({
-	    datumTokenizer: function (datum) {
-	        return Bloodhound.tokenizers.whitespace(datum.value);
-	    },
-	    queryTokenizer: Bloodhound.tokenizers.whitespace,
-	    remote: {
-	        url: '/get/searchSuggest?query=%QUERY',
-	        wildcard: '%QUERY',
-	        filter: function (data) {
-	            // Map the remote source JSON array to a JavaScript object array
-	            var labels = JSON.parse(JSON.stringify(data));
-	            return $.map(labels, function (label) {
-	                return {
-	                    value: label
-	                };
-	            });
-	        }
-	    }
+		datumTokenizer : function(datum) {
+			return Bloodhound.tokenizers.whitespace(datum.value);
+		},
+		queryTokenizer : Bloodhound.tokenizers.whitespace,
+		remote : {
+			url : '/get/searchSuggest?query=%QUERY',
+			wildcard : '%QUERY',
+			filter : function(data) {
+				// Map the remote source JSON array to a JavaScript object array
+				var labels = JSON.parse(JSON.stringify(data));
+				return $.map(labels, function(label) {
+					return {
+						value : label
+					};
+				});
+			}
+		}
 	});
 
 	// Initialize the Bloodhound suggestion engine
@@ -549,12 +634,12 @@
 
 	// Instantiate the Typeahead UI
 	$('#search').typeahead(null, {
-	    displayKey: 'value',
-	    source: labeldata.ttAdapter()
-	}).on('typeahead:selected', function (obj, datum) {
+		displayKey : 'value',
+		source : labeldata.ttAdapter()
+	}).on('typeahead:selected', function(obj, datum) {
 		//console.log(datum);
 		//alert(window.location.origin);
-		var link = window.location.origin+"/"+datum.value+"/";
+		var link = window.location.origin + "/" + datum.value + "/";
 		window.location.href = link;
 		/* $.ajax({
 			type : "GET",
@@ -577,7 +662,6 @@
 			}
 		}); */
 	});
-	
 </script>
 <!-- Essential jQuery Plugins
 ================================================== -->

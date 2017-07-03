@@ -41,7 +41,8 @@ public class Report extends BaseObject implements Serializable {
 	private String updatedBy;
 	private Calendar createdOn;
 	private Calendar updatedOn = new GregorianCalendar();
-	private User owner;
+	private User storeOwner;
+	private Store store;
 	private boolean enabled;
 	
 	public Report() {
@@ -178,15 +179,25 @@ public class Report extends BaseObject implements Serializable {
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "owner_id")
-	public User getOwner() {
-		return owner;
+	@JoinColumn(name = "store_owner_id")
+	public User getStoreOwner() {
+		return storeOwner;
 	}
 
-	public void setOwner(User owner) {
-		this.owner = owner;
+	public void setStoreOwner(User owner) {
+		this.storeOwner = owner;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "store_id")
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+	
 	@Column(name = "created_on")
 	public Calendar getCreatedOn() {
 		return createdOn;

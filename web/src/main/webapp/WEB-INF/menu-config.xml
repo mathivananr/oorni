@@ -25,6 +25,8 @@
             <Item name="report" title="Report" page="/admin/report"/>
             <Item name="jobs" title="Jobs" page="/admin/job-list"/>
             <Item name="jobform" title="Job" page="/admin/jobform"/>
+            <Item name="Carousel" title="Carousel" page="/admin/add-carousel"/>
+            <Item name="Carousels" title="Carousels" page="/admin/carousel-list"/>
             <!-- <Item name="Operators" title="Operators" page="/admin/networkOperators"/>
             <Item name="Operator" title="Operator" page="/admin/networkOperator"/>
             <Item name="ErrorCodes" title="Error Codes" page="/admin/rcErrorCodes"/>

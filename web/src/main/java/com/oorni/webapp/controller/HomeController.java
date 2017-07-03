@@ -28,7 +28,7 @@ public class HomeController extends BaseFormController {
 		this.offerManager = offerManager;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	/*@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView showHome(final HttpServletRequest request,
 			final HttpServletResponse response) throws OorniException {
 		Model model = new ExtendedModelMap();
@@ -46,5 +46,12 @@ public class HomeController extends BaseFormController {
 			model.addAttribute("offers", new ArrayList<Offer>());
 		}
 		return new ModelAndView("/oorni/offers", model.asMap());
+	}*/
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView showHome(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		return new ModelAndView("/cashback", model.asMap());
 	}
 }

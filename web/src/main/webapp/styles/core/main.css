@@ -69,7 +69,7 @@ span.color {
 }
 
 body > section {
-	background:#f9f9f9;
+	background:#fff;
 	padding: 1px 0;
 }
 
@@ -147,7 +147,7 @@ body > section {
 
 #navigation {
   /* background-color: rgba(16, 22, 54, 0.2); */
-  background-color: #0EB493;
+  background-color: #232f3e;
   border: 0 none;
   border-bottom: 1px solid #d8d8d8;
   margin: 0;
@@ -198,7 +198,7 @@ body > section {
 	padding: 0;
 }
 
-#slider .carousel-inner .item {
+/* #slider .carousel-inner .item {
   background-size: cover;
 }
 
@@ -242,7 +242,7 @@ top: -8px;
 .carousel-caption p:after {
   left: 20px;
 }
-
+ */
 .social-links {
   margin-top: 5%;
 }
@@ -261,7 +261,7 @@ top: -8px;
   color: #fff;
 }
 
-.carousel-indicators {
+/* .carousel-indicators {
   bottom: 10px;
   left: inherit;
   margin: 0;
@@ -279,7 +279,7 @@ top: -8px;
 .carousel-indicators .active {
   height: 8px;
   width: 8px;
-}
+} */
 
 
 
@@ -759,6 +759,10 @@ label.error {
 	padding-left : 10px;	
 }
 
+.pad-B-20 {
+	padding-bottom : 20px;
+}
+
 .advise-content{
 	background:none;
 	border:none;
@@ -1134,12 +1138,16 @@ nav.sidebar ul.level1 ul.level2 li a {
 	
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
-
+	.navbar {
+    	padding: 0;
+	}
 }
 
 /* Landscape tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
-
+	.navbar {
+    	padding: 0;
+	}
 }
 
 /* Portrait tablets and small desktops */
@@ -1147,11 +1155,23 @@ nav.sidebar ul.level1 ul.level2 li a {
 	.navbar-nav li a p {
     	font-size: 11px;
 	} 
+	.navbar {
+    	padding: 0;
+	}
+}
+
+@media (min-width: 576px) {
+	.navbar {
+    	padding: .1rem .1rem;
+    	border-radius:0;
+	}
 }
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
-
+	.navbar {
+    	padding: 0;
+	}
 }
 
 /* Portrait phones and smaller */
@@ -1186,7 +1206,7 @@ nav.sidebar ul.level1 ul.level2 li a {
 #account-menu:focus, #account-menu:hover,#account-menu.open {
     color: #fff;
     cursor: default;
-    background-color: #0EB493;
+    background-color: #232f3e;
 }
 
 .noborder {
@@ -1200,6 +1220,16 @@ nav.sidebar ul.level1 ul.level2 li a {
     font-weight: 600;
     line-height: 24px;
     font-size: 16px;
+    text-align:center;
+}
+
+.dropdown-menu {
+	left:inherit;
+	right:-50%;	
+}
+
+.nav-pills {
+	text-align:center;
 }
 
 .nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover{
@@ -1236,4 +1266,281 @@ img:after {
   width: 100%;
   height: 100%;
   background-color: #fff;
+}
+.min-height {
+	min-height:130px;	
+}
+
+.offers-container {
+	padding:3px;	
+}
+
+.text-center{
+	text-align: center;
+}
+
+
+/* conversation images css*/
+
+
+/* CSS talk bubble */
+.talk-bubble {
+	/* margin: 40px; */
+  display: inline-block;
+  position: relative;
+	/* width: 200px; */
+	height: auto;
+	background-color:  #f1f1f1;
+	/* font-size:1.3em; */
+	font-weight:bold;
+	color:#5d8395;
+}
+.border{
+  border: 8px solid #666;
+}
+.round{
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+}
+
+/* Right triangle placed top left flush. */
+.tri-right.border.left-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  	left: -40px;
+	right: auto;
+ 	top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.left-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color:  #f1f1f1 transparent transparent transparent;
+}
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color:  #f1f1f1  #f1f1f1 transparent transparent;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+}
+.tri-right.btm-left:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent  #f1f1f1;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.btm-left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 38px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 12px solid;
+	border-color:  #f1f1f1 transparent transparent  #f1f1f1;
+}
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 30px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 38px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color:  #f1f1f1  #f1f1f1 transparent transparent;
+}
+/*
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent  #f1f1f1;
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -8px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 0px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color:  #f1f1f1  #f1f1f1 transparent transparent;
+}
+
+/* Right triangle, right side slightly down*/
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color:  #f1f1f1 transparent transparent  #f1f1f1;
+}
+
+/* Right triangle placed top right flush. */
+.tri-right.border.right-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.right-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 0px;
+	bottom: auto;
+	border: 20px solid;
+	border-color:  #f1f1f1 transparent transparent transparent;
+}
+
+/* talk bubble contents */
+.talktext{
+  padding: 1em;
+	text-align: left;
+  line-height: 1.5em;
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.input-border-bottom {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    background: none;
+    border-radius:0;
+}
+
+.control-label {
+	padding:.5rem .75rem;
 }

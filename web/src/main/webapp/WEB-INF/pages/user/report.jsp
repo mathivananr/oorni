@@ -11,9 +11,9 @@
     </div>
 </c:if>
 
-<div class="col-sm-10">
+<div class="col-sm-12">
     <h2><fmt:message key="report.heading"/></h2>
-
+	<hr/>
 	<div class="row">
 		<div class="col-lg-2 col-md-2">
 		</div>
@@ -49,8 +49,8 @@
 		  </div><!--/row-->    
 		</div><!--/col-12-->
 	</div><!--/row-->
-	
-    <form method="get" action="${ctx}/user/report" id="searchForm" class="form-inline">
+	<hr/>
+    <%-- <form method="get" action="${ctx}/user/report" id="searchForm" class="form-inline">
     <div id="search" class="text-right">
         <span class="col-sm-9">
             <input type="text" size="20" name="q" id="query" value="${param.q}"
@@ -60,7 +60,7 @@
             <i class="icon-search"></i> <fmt:message key="button.search"/>
         </button>
     </div>
-    </form>
+    </form> --%>
 
    <%--  <div id="actions" class="btn-group">
         <a class="btn btn-primary" href="<c:url value='/admin/report?method=Add&from=list'/>">
@@ -76,14 +76,14 @@
         <display:column property="merchantName" escapeXml="true" sortable="true" titleKey="report.merchantName"
                         style="width: 15%"/>
         <display:column property="product" escapeXml="true" sortable="true" titleKey="report.product"
-        style="width: 15%"/>
+        style="width: 10%"/>
         <display:column property="conversionIp" escapeXml="true" sortable="true" titleKey="report.conversionIp"
         style="width: 10%"/>
         <display:column property="salesAmount" escapeXml="true" sortable="true" titleKey="report.salesAmount"
                         style="width: 10%"/>
-         <display:column property="status" escapeXml="true" sortable="true" titleKey="report.status"
-                        style="width: 10%"/>
         <display:column property="payout" escapeXml="true" sortable="true" titleKey="report.payout"
+                        style="width: 10%"/>
+        <display:column property="status" escapeXml="true" sortable="true" titleKey="report.status"
                         style="width: 10%"/>
         <%-- <display:column sortProperty="enabled" sortable="true" titleKey="report.enabled"
                         style="width: 16%; padding-left: 15px" media="html">

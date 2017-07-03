@@ -87,7 +87,8 @@ public class ReportController extends BaseFormController {
 		Model model = new ExtendedModelMap();
 		try {
 			log.info("saving report");
-			report.setOwner(userManager.getUser(String.valueOf(report.getOwner().getId())));
+			report.setStoreOwner(userManager.getUser(String.valueOf(report.getStoreOwner().getId())));
+			report.setStore(report.getStoreOwner().getStore());
 			report = reportManager.saveReport(report);
 			log.info("report saved");
 			model.addAttribute("activeMenu", "offer-link");

@@ -2,6 +2,7 @@ package com.oorni.dao.hibernate;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,10 +22,16 @@ public class StoreDaoHibernate extends GenericDaoHibernate<Store, Long> implemen
 
 	/**
 	 * {@inheritDoc}
+	 * @throws OorniException 
 	 */
 	@Transactional
-	public Store saveStore(Store store) {
-		return (Store) getSession().merge(store);
+	public Store saveStore(Store store) throws OorniException {
+		try {
+		store = (Store) getSession().merge(store);
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+		return store;
 	}
 
 	/**
