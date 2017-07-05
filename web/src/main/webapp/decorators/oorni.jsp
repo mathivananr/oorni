@@ -55,7 +55,7 @@
 <meta name="author" content="${auther}">
 <!-- Mobile Specific Meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/images/favicon.ico" />
+<link rel="icon" href="/images/favicon1.ico" />
 <link rel="stylesheet" type="text/css"
 	href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
 <link rel="stylesheet" type="text/css"
@@ -93,6 +93,9 @@
 
 	<!--         Fixed Navigation
         ==================================== -->
+<div class="pull-right right-strap">
+		<img alt="beta version" src="/images/beta.png" />
+</div>
 
 	<header id="navigation" class="navbar">
 		<!-- <div class="container"> -->
@@ -143,10 +146,10 @@
 								<p>Create Store</p>
 								</a>
 							</li>
-							<li class="nav-item text-center"><a class="nav-link" href="/cashback"> <i
+							<!-- <li class="nav-item text-center"><a class="nav-link" href="/cashback"> <i
 									class="fa fa-inr" aria-hidden="true"></i>
 									<p>Shop & Earn</p>
-							</a></li>
+							</a></li> -->
 						</c:otherwise>
 					</c:choose>
 					
