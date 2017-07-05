@@ -17,8 +17,11 @@
 	<c:when test="${not empty storeTitle}">
 		<title>${storeTitle}</title>
 	</c:when>
-	<c:otherwise>
+	<c:when test="${not empty appTitle}">
 		<title>${appTitle}</title>
+	</c:when>
+	<c:otherwise>
+		<title>oorni</title>
 	</c:otherwise>
 </c:choose>
 
@@ -26,8 +29,11 @@
 	<c:when test="${not empty metaKeywords}">
 		<meta name="keywords" content="${metaKeywords}">
 	</c:when>
-	<c:otherwise>
+	<c:when test="${not empty appMetaKeyword}">
 		<meta name="keywords" content="${appMetaKeyword}">
+	</c:when>
+	<c:otherwise>
+		<meta name="keywords" content="cashback, shopping cashback, coupons, offers, best, best cashback">
 	</c:otherwise>
 </c:choose>
 
@@ -96,7 +102,7 @@
 				<a class="navbar-brand" href="/" style="margin-top:5px;"><h1>oorni</h1></a>
 			</div>
 		</div>
-		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 ">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 ">
 			<!-- <div class="dtable hw100">
 				<div class="dtable-cell hw100">
 					<div class="text-center">
@@ -118,7 +124,7 @@
 			</div> -->
 		</div>
 
-		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<div class="search-row pull-right" role="navigation" style="padding-right:20px;">
 				<security:authentication var="user" property="principal" />
 				<ul class="nav nav-pills">
@@ -148,10 +154,10 @@
 							class="fa fa-comment" aria-hidden="true"></i>
 							<p>Chat</p>
 					</a></li>
-					<!-- <li class="nav-item"><a class="nav-link" href="/offers"> <i
+					<li class="nav-item"><a class="nav-link" href="/offers"> <i
 							class="fa fa-refresh" aria-hidden="true"></i>
 							<p>Offers</p>
-					</a></li> -->
+					</a></li>
 					<li class="nav-item dropdown">
 						<!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 				    <div class="dropdown-menu">

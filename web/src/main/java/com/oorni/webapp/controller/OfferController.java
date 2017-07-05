@@ -88,6 +88,15 @@ public class OfferController extends BaseFormController {
 		model.addAttribute("offerList", offerManager.getOffersAddedByMe());
 		return new ModelAndView("/oorni/offer-list", model.asMap());
 	}
+	
+	@RequestMapping(value = "/admin/offer-list", method = RequestMethod.GET)
+	public ModelAndView getAllOffers(final HttpServletRequest request,
+			final HttpServletResponse response) throws OorniException {
+		Model model = new ExtendedModelMap();
+		model.addAttribute("activeMenu", "offer-link");
+		model.addAttribute("offerList", offerManager.getAllOffers());
+		return new ModelAndView("/oorni/offer-list", model.asMap());
+	}
 
 	@RequestMapping(value = "/user/edit-offer", method = RequestMethod.GET)
 	public ModelAndView showCouponUpdate(final HttpServletRequest request,

@@ -30,7 +30,7 @@
 		<form:hidden path="merchantType" />
 		<form:hidden path="createdOn" />
 		<form:hidden path="createdBy" />
-		<form:hidden path="owner.id" id="ownerId"/>
+		<form:hidden path="storeOwner.id" id="ownerId"/>
 		<div class="row">
 			<div class="form-group">
 				<form:input cssClass="form-control" path="merchantName"
@@ -87,7 +87,7 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<input class="form-control" id="storeName" placeholder="Store Name" value="${report.owner.store.storeName}"/>
+				<input class="form-control" id="storeName" placeholder="Store Name" value="${report.storeOwner.store.storeName}"/>
 			</div>
 		</div>
 		<div class="row">

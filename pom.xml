@@ -94,7 +94,7 @@
         <amp.genericCore>true</amp.genericCore>
         <amp.fullSource>false</amp.fullSource>
         <dao.framework>hibernate</dao.framework>
-        <db.name>oorni</db.name>
+        <db.name>oorni1</db.name>
         <web.framework>spring</web.framework>
 
         <!-- Framework/Plugin versions -->

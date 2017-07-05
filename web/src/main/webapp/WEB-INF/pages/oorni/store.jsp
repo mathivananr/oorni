@@ -18,7 +18,7 @@
 			<div class="tab-pane active col-lg-12 col-md-12 col-sm-12 col-xs-12" id="all" role="tabpanel">
 				<c:forEach var="merchantType" items="${merchantTypeList}">
 					<div class="row">
-						<div class="page-header">
+						<div class="page-header pad-10 text-capitalize">
 							<h3>${merchantType.typeName}</h3>
 							<hr/>
 						</div>
@@ -38,7 +38,7 @@
 			</div>
 			<c:forEach var="merchantType" items="${merchantTypeList}">
 				<div class="tab-pane col-lg-12 col-md-12 col-sm-12 col-xs-12" id="${fn:replace(merchantType.typeName,' ', '_')}" role="tabpanel">
-					<div class="page-header">
+					<div class="page-header pad-10 text-capitalize">
 						<h3>${merchantType.typeName}</h3>
 						<hr/>
 					</div>

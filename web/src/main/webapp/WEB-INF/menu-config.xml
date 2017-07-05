@@ -18,7 +18,7 @@
             <Item name="Merchants" title="Merchants" page="/admin/merchants"/>
             <Item name="Merchant" title="Merchant" page="/admin/merchant"/>
             <Item name="Offer" title="Offer" page="user/add-offer"/>
-            <Item name="Offers" title="Offers" page="/user/offer-list"/>
+            <Item name="Offers" title="Offers" page="/admin/offer-list"/>
             <Item name="Label" title="Label" page="/user/add-label"/>
             <Item name="Labels" title="Labels" page="/user/label-list"/>
             <Item name="reportform" title="Report Form" page="/admin/reportform"/>

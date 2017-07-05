@@ -26,6 +26,11 @@ public class Payment extends BaseObject implements Serializable {
 	private Double paymentAmount;
 	private Calendar paymentDate;
 	private String paymentMethod;
+	private String paymentDescription;
+	private String transactionNmber;
+	private String chequeNumber;
+	private String bankName;
+	private String walletName;
 	private String status;
 	private User recipient;
 	private Calendar createdOn;
