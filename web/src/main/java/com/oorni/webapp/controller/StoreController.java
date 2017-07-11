@@ -78,8 +78,14 @@ public class StoreController extends BaseFormController {
 	public ModelAndView showCreateStorePage(final HttpServletRequest request,
 			final HttpServletResponse response) throws OorniException {
 		Model model = new ExtendedModelMap();
-		model.addAttribute(Constants.PAGE, new Store());
-		return new ModelAndView("/createStore", model.asMap());
+		Store store = storeManager.getMyStore();
+		if(store == null){
+			model.addAttribute(Constants.PAGE, new Store());
+			return new ModelAndView("/createStore", model.asMap());
+		} else {
+			model.addAttribute(Constants.PAGE, storeManager.getMyStore());
+			return new ModelAndView("/user/storeform", model.asMap());
+		}
 	}
 	
 	@ModelAttribute
