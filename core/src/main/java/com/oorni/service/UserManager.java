@@ -2,6 +2,9 @@ package com.oorni.service;
 
 import com.oorni.common.OorniException;
 import com.oorni.dao.UserDao;
+import com.oorni.model.BankAccount;
+import com.oorni.model.OnlineWallet;
+import com.oorni.model.Payment;
 import com.oorni.model.User;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -162,4 +165,26 @@ public interface UserManager extends GenericManager<User, Long> {
 	 */
     List<Map<String, String>> getUserSuggestionByStoreName(String name)
 			throws OorniException;
+    
+   /* BankAccount saveBankDetails(BankAccount bankAccount) throws OorniException;
+	
+	OnlineWallet saveWalletDetails(OnlineWallet onlineWallet) throws OorniException;
+	
+	BankAccount getBankDetail(Long accountId) throws OorniException;
+	
+	OnlineWallet getWalletDetail(Long walletId) throws OorniException;
+	
+	BankAccount getBankDetail(Long accountId, Long ownerId) throws OorniException;
+	
+	OnlineWallet getWalletDetail(Long walletId, Long ownerId) throws OorniException;*/
+	
+	Payment getPaymentRequest(Long paymentId) throws OorniException;
+	
+	Payment getPaymentRequest(Long paymentId, String username) throws OorniException;
+	
+	Payment savePayment(Payment payment) throws OorniException;
+	
+	List<Payment> getAllPayments();
+	
+	List<Payment> getPayments();
 }

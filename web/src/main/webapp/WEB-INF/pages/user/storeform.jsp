@@ -30,6 +30,7 @@
 		<form:hidden path="storeId" />
 		<form:hidden path="createdOn"/>
 		<form:hidden path="enabled"/>
+		<form:hidden path="owner"/>
 		
 		<div class="row">
 			<div class="form-group">

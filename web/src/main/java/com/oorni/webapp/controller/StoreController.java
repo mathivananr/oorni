@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
@@ -33,7 +34,6 @@ import com.oorni.service.ReportManager;
 import com.oorni.service.RoleManager;
 import com.oorni.service.StoreManager;
 import com.oorni.service.UserExistsException;
-import com.oorni.service.UserManager;
 import com.oorni.util.CommonUtil;
 
 @Controller
@@ -135,8 +135,12 @@ public class StoreController extends BaseFormController {
 			} else {
 				user = new User();
 				user.setEmail(request.getParameter("email"));
-				if(this.getUserManager().getUserByUsername(user.getEmail()) != null) {
-					throw new OorniException("Account already exists for this email : "+ user.getEmail());
+				try {
+					if(this.getUserManager().getUserByUsername(user.getEmail()) != null) {
+						throw new OorniException("Account already exists for this email : "+ user.getEmail());
+					}
+				} catch (UsernameNotFoundException e) {
+					log.info("new user :"+ user.getUsername());
 				}
 				user.setPassword(request.getParameter("password"));
 

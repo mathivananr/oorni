@@ -345,7 +345,7 @@ public class EmailOfferProcessorImpl implements EmailOfferProcessor {
 					Message message = messages[i];
 					System.out.println("content type "+message.getContentType());
 					System.out.println("subject :: "+message.getSubject());
-					if(message.getSubject().contains("Offer Updates") || message.getSubject().contains("Offer updates") || message.getSubject().contains("offer updates") || message.getSubject().contains("offer Updates") || message.getSubject().contains("Offer Update")|| message.getSubject().contains("offer update")) {
+					if(message.getSubject().contains("Offer Updates") || message.getSubject().contains("Offer updates") || message.getSubject().contains("offer updates") || message.getSubject().contains("offer Updates") || message.getSubject().contains("Offer Update")|| message.getSubject().contains("offer update")|| message.getSubject().contains("Offers Update")) {
 						if (message.getContentType().contains("multipart")) {
 							Multipart multiPart = (Multipart) message.getContent();
 							for (int j = 0; j < multiPart.getCount(); j++) {

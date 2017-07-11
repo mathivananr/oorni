@@ -1,12 +1,13 @@
 package com.oorni.dao.hibernate;
 
-import com.oorni.common.OorniException;
-import com.oorni.dao.UserDao;
-import com.oorni.model.Merchant;
-import com.oorni.model.Offer;
-import com.oorni.model.User;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.Table;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
@@ -21,11 +22,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Table;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.oorni.common.OorniException;
+import com.oorni.dao.UserDao;
+import com.oorni.model.BankAccount;
+import com.oorni.model.Merchant;
+import com.oorni.model.OnlineWallet;
+import com.oorni.model.Payment;
+import com.oorni.model.User;
 
 /**
  * This class interacts with Hibernate session to save/delete and
@@ -165,5 +168,171 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
 		} else {
 			return new ArrayList<Map<String,String>>();
 		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @throws OorniException 
+	 *//*
+	@Transactional
+	public BankAccount saveBankDetails(BankAccount bankAccount) throws OorniException {
+		try {
+			bankAccount = (BankAccount) getSession().merge(bankAccount);
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+		return bankAccount;
+	}
+	
+	*//**
+	 * {@inheritDoc}
+	 * @throws OorniException 
+	 *//*
+	@Transactional
+	public OnlineWallet saveWalletDetails(OnlineWallet onlineWallet) throws OorniException {
+		try {
+			onlineWallet = (OnlineWallet) getSession().merge(onlineWallet);
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+		return onlineWallet;
+	}
+	
+	*//**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 *//*
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public BankAccount getBankDetail(Long accountId) throws OorniException {
+		List<BankAccount> accounts = getSession().createCriteria(BankAccount.class)
+				.add(Restrictions.eq("bankAccountId", accountId)).list();
+		if (accounts != null && accounts.size() > 0) {
+			return accounts.get(0);
+		} else {
+			throw new OorniException("No Bank details found for id " + accountId);
+		}
+	}
+	
+	*//**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 *//*
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public BankAccount getBankDetail(Long accountId, Long ownerId) throws OorniException {
+		List<BankAccount> accounts = getSession().createCriteria(BankAccount.class)
+				.add(Restrictions.eq("bankAccountId", accountId))
+				.add(Restrictions.eq("owner.id", ownerId)).list();
+		if (accounts != null && accounts.size() > 0) {
+			return accounts.get(0);
+		} else {
+			throw new OorniException("No Bank details found for id " + accountId);
+		}
+	}
+	
+	*//**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 *//*
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public OnlineWallet getWalletDetail(Long walletId) throws OorniException {
+		List<OnlineWallet> wallets = getSession().createCriteria(OnlineWallet.class)
+				.add(Restrictions.eq("walletId", walletId)).list();
+		if (wallets != null && wallets.size() > 0) {
+			return wallets.get(0);
+		} else {
+			throw new OorniException("No Wallet details found for id " + walletId);
+		}
+	}
+	
+	*//**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 *//*
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public OnlineWallet getWalletDetail(Long walletId, Long ownerId) throws OorniException {
+		List<OnlineWallet> wallets = getSession().createCriteria(OnlineWallet.class)
+				.add(Restrictions.eq("walletId", walletId))
+				.add(Restrictions.eq("owner.id", ownerId)).list();
+		if (wallets != null && wallets.size() > 0) {
+			return wallets.get(0);
+		} else {
+			throw new OorniException("No Wallet details found for id " + walletId);
+		}
+	}*/
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public Payment getPaymentRequest(Long paymentId) throws OorniException {
+		List<Payment> payments = getSession().createCriteria(Payment.class)
+				.add(Restrictions.eq("paymentId", paymentId)).list();
+		if (payments != null && payments.size() > 0) {
+			return payments.get(0);
+		} else {
+			throw new OorniException("No payment details found for id " + paymentId);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws OorniException
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public Payment getPaymentRequest(Long paymentId, String username) throws OorniException {
+		List<Payment> payments = getSession().createCriteria(Payment.class)
+				.add(Restrictions.eq("paymentId", paymentId))
+				.add(Restrictions.eq("createdBy", username)).list();
+		if (payments != null && payments.size() > 0) {
+			return payments.get(0);
+		} else {
+			throw new OorniException("No payment details found for id " + paymentId);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @throws OorniException 
+	 */
+	@Transactional
+	public Payment savePayment(Payment payment) throws OorniException {
+		try {
+			payment = (Payment) getSession().merge(payment);
+		} catch (HibernateException e) {
+			throw new OorniException(e.getMessage(), e);
+		}
+		return payment;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Payment> getAllPayments() {
+		return getSession().createCriteria(Payment.class).list();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Payment> getPayments(String username) {
+		return getSession().createCriteria(Payment.class)
+		.add(Restrictions.eq("createBy", username)).list();
 	}
 }

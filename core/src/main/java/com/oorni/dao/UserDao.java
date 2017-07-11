@@ -1,8 +1,12 @@
 package com.oorni.dao;
 
 import com.oorni.common.OorniException;
+import com.oorni.model.BankAccount;
+import com.oorni.model.OnlineWallet;
+import com.oorni.model.Payment;
 import com.oorni.model.User;
 
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -77,5 +81,26 @@ public interface UserDao extends GenericDao<User, Long> {
 	 */
 	List<Map<String, String>> getUserSuggestionByStoreName(String name)
 			throws OorniException;
-    
+	
+	/*BankAccount saveBankDetails(BankAccount bankAccount) throws OorniException;
+	
+	OnlineWallet saveWalletDetails(OnlineWallet onlineWallet) throws OorniException;
+	
+	BankAccount getBankDetail(Long accountId) throws OorniException;
+	
+	OnlineWallet getWalletDetail(Long walletId) throws OorniException;
+	
+	BankAccount getBankDetail(Long accountId, Long ownerId) throws OorniException;
+	
+	OnlineWallet getWalletDetail(Long walletId, Long ownerId) throws OorniException;*/
+	
+	Payment getPaymentRequest(Long paymentId) throws OorniException;
+	
+	Payment getPaymentRequest(Long paymentId, String username) throws OorniException;
+	
+	Payment savePayment(Payment payment) throws OorniException;
+	
+	List<Payment> getAllPayments();
+	
+	List<Payment> getPayments(String username);
 }

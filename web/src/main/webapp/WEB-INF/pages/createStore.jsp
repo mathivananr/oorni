@@ -29,6 +29,7 @@
 		<form:hidden path="storeId" />
 		<form:hidden path="createdOn" />
 		<form:hidden path="enabled" />
+		<form:hidden path="owner"/>
 
 		<security:authentication var="user" property="principal" />
 		<c:choose>
@@ -50,7 +51,7 @@
 					<div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
 						<input type="email" class="form-control input-border-bottom"
 							id="email" name="email" value="" required
-							title="Please enter you email" placeholder="example@gmail.com">
+							title="Please enter you email" placeholder1="example@gmail.com">
 						<span class="help-block"></span>
 					</div>
 				</div>
@@ -61,7 +62,7 @@
 					<div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
 						<input type="password" class="form-control input-border-bottom"
 							id="password" name="password" value="" required
-							title="Please enter your password" placeholder="password"> <span
+							title="Please enter your password" placeholder1="password"> <span
 							class="help-block"></span>
 					</div>
 				</div>
@@ -81,7 +82,7 @@
 			</div>
 			<div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
 				<form:input cssClass="form-control input-border-bottom" required="required"
-					path="storeName" id="storeName" placeholder="Store Name" />
+					path="storeName" id="storeName" placeholder1="Store Name" />
 			</div>
 		</div>
 		<div class="row">
@@ -90,7 +91,7 @@
 			</div>
 			<div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
 				<form:input cssClass="form-control input-border-bottom" path="title"
-					id="title" placeholder="Title" />
+					id="title" placeholder1="Title" />
 			</div>
 		</div>
 		<div class="row">
@@ -99,7 +100,7 @@
 			</div>
 			<div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
 				<form:textarea cssClass="form-control input-border-bottom"
-					path="description" id="description" placeholder="Description" />
+					path="description" id="description" placeholder1="Description" rows="1"/>
 			</div>
 		</div>
 		<div class="row">

@@ -132,6 +132,8 @@ public final class Constants {
 
 	public static final String SR_CLOSE = "close";
 
+	public static final String OPEN = "open";
+	
 	/**
 	 * The name of the CSS Theme setting.
 	 * 

@@ -14,7 +14,7 @@ import org.subethamail.wiser.Wiser;
 import java.net.BindException;
 import java.util.Random;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
     "classpath:/applicationContext-resources.xml",
     "classpath:/applicationContext-dao.xml",

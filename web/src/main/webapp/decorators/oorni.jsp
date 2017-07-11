@@ -93,8 +93,8 @@
 
 	<!--         Fixed Navigation
         ==================================== -->
-<div class="pull-right right-strap">
-		<img alt="beta version" src="/images/beta.png" />
+<div class="pull-right right-strap beta">
+		<img alt="beta version" src="/images/beta.png" height=75 width=90 />
 </div>
 
 	<header id="navigation" class="navbar">
@@ -102,9 +102,9 @@
 
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
 			<div class="search-row" >
-				<a class="navbar-brand" href="/" style="margin-top:5px;"><h1>oorni</h1></a>
+				<a class="navbar-brand" href="/" style="margin-top:2px;"><h1>oorni</h1></a>
 			</div>
-		</div>
+		</div>  
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 ">
 			<!-- <div class="dtable hw100">
 				<div class="dtable-cell hw100">
@@ -128,7 +128,7 @@
 		</div>
 
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<div class="search-row pull-right" role="navigation" style="padding-right:20px;">
+			<div class="search-row pull-right" role="navigation" style="padding-right:30px;">
 				<security:authentication var="user" property="principal" />
 				<ul class="nav nav-pills">
 					<c:choose>
@@ -141,15 +141,15 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="/createStore"> 
+							<!-- <li class="nav-item"><a class="nav-link" href="/createStore"> 
 								<i class="fa fa-th-large" aria-hidden="true"></i>
 								<p>Create Store</p>
 								</a>
-							</li>
-							<!-- <li class="nav-item text-center"><a class="nav-link" href="/cashback"> <i
+							</li> -->
+							<li class="nav-item text-center"><a class="nav-link" href="/cashback"> <i
 									class="fa fa-inr" aria-hidden="true"></i>
-									<p>Shop & Earn</p>
-							</a></li> -->
+									<p>Cashback</p>
+							</a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -212,9 +212,13 @@
 											<li><a href="/user/editStore">Edit Store</a></li>
 											<li class="dropdown-divider"></li>
 											<li><a href="/user/report">Revenue Report</a></li>
+											<li class="dropdown-divider"></li>
+											<li><a href="/user/paymentRequest">New Payment Request</a></li>
+											<li class="dropdown-divider"></li>
+											<li><a href="/user/payments">Payment History</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/user/createStore">Create Store</a></li>
+											<li><a href="/createStore">Create Store</a></li>
 										</c:otherwise>
 									</c:choose>
 									<li class="dropdown-divider"></li>
@@ -320,77 +324,6 @@
 						</ul>
                     </li>
 				</ul> --%>
-			</div>
-		</div>
-
-		<!-- Modal -->
-		<div id="myModal" class="modal fade" role="dialog" >
-			<div class="modal-dialog">
-				<div class="modal-content row" style="padding-bottom:20px;">
-					<!-- <div class="row">
-						<div class="modal-header" style="padding:0; padding-right:10px;border:0;">
-							
-							<h4 class="modal-title" id="myModalLabel">Login</h4>
-						</div> -->
-						<div class="modal-body" style="padding:0;padding-top:5px;">
-							<div class="col-xs-6">
-								<h3 class="modal-title text-center" id="myModalLabel">Login</h3>
-								<hr style="margin-right:10%;">
-								<div class="" style="padding-right:30px; border:0; border-right:1px solid #ccc;">
-									<form id="loginForm" novalidate="novalidate" method="post"
-										action="<c:url value='/j_security_check'/>">
-										<div class="form-group">
-											<input type="text" class="form-control input-border-bottom" id="j_username"
-												name="j_username" value="" required
-												title="Please enter you username"
-												placeholder="example@gmail.com"> <span
-												class="help-block"></span>
-										</div>
-										<div class="form-group">
-											<input type="password" class="form-control input-border-bottom" id="j_password"
-												name="j_password" value="" required
-												title="Please enter your password" placeholder="password"> <span
-												class="help-block"></span>
-										</div>
-										<div id="loginErrorMsg" class="alert alert-error" style="display:none">Wrong
-											username or password</div>
-										<button type="submit" class="btn btn-success btn-block">Login</button>
-									</form>
-								</div>
-							</div>
-							<div class="col-xs-6">
-								<button type="button" class="close pull-right" data-dismiss="modal">
-									<span aria-hidden="true">×</span><span class="sr-only">Close</span>
-								</button>
-								<h3 class="modal-title text-center" id="myModalLabel">Signup</h3>
-								<hr>
-								<div class="" >
-									<form id="signupForm" method="post" action="signup"
-										novalidate="novalidate">
-										<div class="form-group">
-											<input
-												type="text" class="form-control input-border-bottom" id="email" name="email"
-												value="" required title="Please enter you email"
-												placeholder="example@gmail.com"> <span
-												class="help-block"></span>
-										</div>
-
-										<div class="form-group">
-											<input type="password" class="form-control input-border-bottom" id="password"
-												name="password" value="" required
-												title="Please enter your password" placeholder="password">
-											<span class="help-block"></span>
-										</div>
-
-										<div id="loginErrorMsg" class="alert alert-error" style="display:none">Wrong
-											username og password</div>
-										<button type="submit" class="btn btn-danger btn-block">Signup</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -570,7 +503,7 @@
 					</div> -->
 			<!-- <div class="container"> -->
 				<%@ include file="/common/messages.jsp"%>
-				<div class="mb50" id="main-content">
+				<div class="" id="main-content">
 					<decorator:body />
 				</div>
 			<!-- </div> -->
@@ -615,6 +548,75 @@
 
 	<a href="javascript:void(0);" id="back-top"><i
 		class="fa fa-angle-up fa-3x"></i></a>
+	<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog" >
+			<div class="modal-dialog">
+				<div class="modal-content row" style="padding-bottom:20px;">
+					<!-- <div class="row">
+						<div class="modal-header" style="padding:0; padding-right:10px;border:0;">
+							
+							<h4 class="modal-title" id="myModalLabel">Login</h4>
+						</div> -->
+						<div class="modal-body" style="padding:0;padding-top:5px;">
+							<div class="col-xs-6">
+								<h3 class="modal-title text-center" id="myModalLabel">Login</h3>
+								<hr style="margin-right:10%;">
+								<div class="" style="padding-right:30px; border:0; border-right:1px solid #ccc;">
+									<form id="loginForm" novalidate="novalidate" method="post"
+										action="<c:url value='/j_security_check'/>">
+										<div class="form-group">
+											<input type="text" class="form-control input-border-bottom" id="j_username"
+												name="j_username" value="" required
+												title="Please enter you username"
+												placeholder="example@gmail.com"> <span
+												class="help-block"></span>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control input-border-bottom" id="j_password"
+												name="j_password" value="" required
+												title="Please enter your password" placeholder="password"> <span
+												class="help-block"></span>
+										</div>
+										<div id="loginErrorMsg" class="alert alert-error" style="display:none">Wrong
+											username or password</div>
+										<button type="submit" class="btn btn-success btn-block">Login</button>
+									</form>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<button type="button" class="close pull-right" data-dismiss="modal">
+									<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+								</button>
+								<h3 class="modal-title text-center" id="myModalLabel">Signup</h3>
+								<hr>
+								<div class="" >
+									<form id="signupForm" method="post" action="signup"
+										novalidate="novalidate">
+										<div class="form-group">
+											<input
+												type="text" class="form-control input-border-bottom" id="email" name="email"
+												value="" required title="Please enter you email"
+												placeholder="example@gmail.com"> <span
+												class="help-block"></span>
+										</div>
+
+										<div class="form-group">
+											<input type="password" class="form-control input-border-bottom" id="password"
+												name="password" value="" required
+												title="Please enter your password" placeholder="password">
+											<span class="help-block"></span>
+										</div>
+
+										<div id="loginErrorMsg" class="alert alert-error" style="display:none">Wrong
+											username og password</div>
+										<button type="submit" class="btn btn-danger btn-block">Signup</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 </body>
 <script type="text/javascript">
 	// Instantiate the Bloodhound suggestion engine

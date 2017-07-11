@@ -91,7 +91,7 @@
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
 					  <div class="talktext">
-					    <p>wow! looks cool and simple.</p>
+					    <p>is it?</p>
 					  </div>
 					</div>
 				</div>
@@ -135,7 +135,7 @@
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
 					  <div class="talktext">
-					   	<p>you guys are crazy. how is that?</p>
+					   	<p>you guys are crazy. how is that possible?</p>
 					  </div>
 					</div>
 				</div>
@@ -189,7 +189,7 @@
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
 					  <div class="talktext">
-					    <p>OMG! Amazing, I am going to create a store now. see you</p>
+					    <p>OMG! it's simply amazing, I am going to create a store now. see you.</p>
 					  </div>
 					</div>
 				</div>
@@ -197,7 +197,7 @@
         	
         </div>
         
-            <div class="col-sm-12" style="min-height:600px;padding-top:20px;">
+            <div class="col-sm-12" style="padding:20px;">
                 <div class="col-lg-3 col-sm-3 col-xs-12 bs-wizard-step complete">
                   <div class="text-center bs-wizard-stepnum"><h3>Create store</h3></div>
                   <div class="progress"><div class="progress-bar"></div></div>
@@ -234,7 +234,7 @@
                   <a href="#" class="bs-wizard-dot"></a>
                   <div class="bs-wizard-info text-center">transfer earned commission amount to your bank account or online wallet.</div>
                 </div>
-                <div style="height:300px;"></div>
+                
             </div>
         	
 </html>

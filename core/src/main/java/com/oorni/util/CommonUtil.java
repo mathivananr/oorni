@@ -8,6 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.oorni.Constants;
+import com.oorni.model.Role;
 import com.oorni.model.User;
 
 public final class CommonUtil {
@@ -20,6 +22,17 @@ public final class CommonUtil {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = (User)authentication.getPrincipal();
 		return user;
+	}
+	
+	public static boolean isAdminUser() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User)authentication.getPrincipal();
+		boolean isAdmin = false;
+		for(Role role: user.getRoles()) {
+			role.getName().equals(Constants.ADMIN_ROLE);
+			isAdmin = true;
+		}
+		return isAdmin;
 	}
 	
 	public static String getLoggedInUserId() {

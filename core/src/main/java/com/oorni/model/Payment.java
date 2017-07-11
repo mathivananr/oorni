@@ -4,13 +4,11 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -25,18 +23,17 @@ public class Payment extends BaseObject implements Serializable {
 	private Long paymentId;
 	private Double paymentAmount;
 	private Calendar paymentDate;
-	private String paymentMethod;
+	private String paymentMode;
 	private String paymentDescription;
 	private String transactionNmber;
-	private String chequeNumber;
-	private String bankName;
-	private String walletName;
+	private BankAccount bankAccount = new BankAccount();
+	private OnlineWallet onlineWallet = new OnlineWallet();
 	private String status;
-	private User recipient;
 	private Calendar createdOn;
 	private Calendar updatedOn;
-	private boolean enabled;
-
+	private String createdBy;
+	private String updatedBy;
+	
 	public Payment() {
 		super();
 	}
@@ -71,32 +68,58 @@ public class Payment extends BaseObject implements Serializable {
 		this.paymentDate = paymentDate;
 	}
 
-	@Column(name = "payment_method")
-	public String getPaymentMethod() {
-		return paymentMethod;
+	@Column(name = "payment_mode")
+	public String getPaymentMode() {
+		return paymentMode;
 	}
 
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
 	}
 
-	@Column(name = "status")
+	@Embedded
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+
+	@Embedded
+	public OnlineWallet getOnlineWallet() {
+		return onlineWallet;
+	}
+
+	public void setOnlineWallet(OnlineWallet onlineWallet) {
+		this.onlineWallet = onlineWallet;
+	}
+
+	@Column(name = "payment_description")
+	public String getPaymentDescription() {
+		return paymentDescription;
+	}
+
+	public void setPaymentDescription(String paymentDescription) {
+		this.paymentDescription = paymentDescription;
+	}
+
+	@Column(name = "tansaction_no")
+	public String getTransactionNmber() {
+		return transactionNmber;
+	}
+
+	public void setTransactionNmber(String transactionNmber) {
+		this.transactionNmber = transactionNmber;
+	}
+
+	@Column(name = "status" )
 	public String getStatus() {
 		return status;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "recipient_id")
-	public User getRecipient() {
-		return recipient;
-	}
-
-	public void setRecipient(User recipient) {
-		this.recipient = recipient;
 	}
 
 	public Calendar getCreatedOn() {
@@ -107,20 +130,30 @@ public class Payment extends BaseObject implements Serializable {
 		this.createdOn = createdOn;
 	}
 
+	@Column(name = "created_by")
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Column(name = "updated_by")
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+	
 	public Calendar getUpdatedOn() {
 		return updatedOn;
 	}
 
 	public void setUpdatedOn(Calendar updatedOn) {
 		this.updatedOn = updatedOn;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	/**

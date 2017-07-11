@@ -92,12 +92,12 @@ public class PasswordTokenManagerTest {
 
     @After
     public void after() {
-        userManager.removeUser(userManager.getUserByUsername("token-test"));
+        userManager.removeUser(userManager.getUserByUsername("token-test@appfuse.org"));
     }
 
     @Test
     public void testGenerateRecoveryToken() {
-        final User user = userManager.getUserByUsername("token-test");
+        final User user = userManager.getUserByUsername("token-test@appfuse.org");
         final String token = passwordTokenManager.generateRecoveryToken(user);
         assertNotNull(token);
         assertTrue(passwordTokenManager.isRecoveryTokenValid(user, token));

@@ -65,6 +65,9 @@ public class User extends BaseObject implements Serializable, UserDetails {
     private String phoneNumber;
     private String mobileNumber;
     private String website;
+    private String panNo;
+    private String userType;
+    private String companyName;
     private Address address = new Address();
     private Integer version;
     private Set<Role> roles = new HashSet<Role>();
@@ -73,7 +76,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
     private boolean accountExpired;
     private boolean accountLocked;
     private boolean credentialsExpired;
-
+       
     /**
      * Default constructor - creates a new instance with no values set.
      */
@@ -324,6 +327,33 @@ public class User extends BaseObject implements Serializable, UserDetails {
 		this.mobileNumber = mobileNumber;
 	}
 
+	@Column(name = "pan_no")
+	public String getPanNo() {
+		return panNo;
+	}
+
+	public void setPanNo(String panNo) {
+		this.panNo = panNo;
+	}
+
+	@Column(name = "user_type")
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	@Column(name = "company_name")
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	public void setWebsite(String website) {
         this.website = website;
     }
@@ -332,7 +362,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.address = address;
     }
 
-    public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
