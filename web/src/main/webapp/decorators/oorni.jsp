@@ -20,9 +20,6 @@
 	<c:when test="${not empty appTitle}">
 		<title>${appTitle}</title>
 	</c:when>
-	<c:otherwise>
-		<title>oorni</title>
-	</c:otherwise>
 </c:choose>
 
 <c:choose>
@@ -33,7 +30,7 @@
 		<meta name="keywords" content="${appMetaKeyword}">
 	</c:when>
 	<c:otherwise>
-		<meta name="keywords" content="cashback, shopping cashback, coupons, offers, best, best cashback">
+		<meta name="keywords" content="cashback, shopping cashback, coupons, today offers, best cashback site, best cashback site in india">
 	</c:otherwise>
 </c:choose>
 

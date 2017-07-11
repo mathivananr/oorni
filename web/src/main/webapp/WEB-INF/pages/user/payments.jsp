@@ -14,7 +14,8 @@
 
 <div class="col-sm-12">
     <h2><fmt:message key="payments.heading"/></h2>
-
+	<hr/>
+	<br/>
     <div id="actions" class="btn-group">
         <a class="btn btn-primary" href="<c:url value='/user/paymentRequest?method=Add&from=list'/>">
             <i class="icon-plus icon-white"></i> New Payment Request</a>

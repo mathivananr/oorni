@@ -51,8 +51,8 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 		Calendar now = new GregorianCalendar();
 		if (StringUtil.isEmptyString(store.getStoreId())) {
 			store.setCreatedOn(now);
-			store.setOwner(CommonUtil.getLoggedInUser());
 		}
+		store.setOwner(CommonUtil.getLoggedInUser());
 		store.setUpdatedOn(now);
 		store.setStoreName(store.getStoreName().replaceAll(" ", "-"));
 		return storeDao.saveStore(store);

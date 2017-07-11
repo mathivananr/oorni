@@ -29,7 +29,6 @@
 		<form:hidden path="storeId" />
 		<form:hidden path="createdOn" />
 		<form:hidden path="enabled" />
-		<form:hidden path="owner"/>
 
 		<security:authentication var="user" property="principal" />
 		<c:choose>
