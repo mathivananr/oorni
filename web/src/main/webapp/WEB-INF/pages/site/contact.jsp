@@ -1,4 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
+<head>
+	<title>Contact</title>
+</head>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<section id="contact" class="contact">
 		<div class="container">
@@ -38,10 +41,11 @@
 						</form>
 					</div> -->
 					<div class="span12 sec-sub-title">
-						<p>Write to us <a class="link-color" href="mailto:contact@muniyamma.com">contact@muniyamma.com</a></p>
+						<p>Write to us <a class="link-color" href="mailto:contact@oorni.com">contact@oorni.com</a></p>
 					</div>
 					<!-- end contact form -->
 				</div>
 			</div>
+		</div>
 	</section>
 </div>

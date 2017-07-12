@@ -7,66 +7,58 @@
 <html lang="en" class="no-js">
 <!--<![endif]-->
 <head>
-<!-- meta charec set -->
-<meta charset="utf-8">
-<!-- Always force latest IE rendering engine or request Chrome Frame -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<!-- Store Title -->
-<c:choose>
-	<c:when test="${not empty storeTitle}">
-		<title>${storeTitle}</title>
-	</c:when>
-	<c:when test="${not empty appTitle}">
-		<title>${appTitle}</title>
-	</c:when>
-</c:choose>
-
-<c:choose>
-	<c:when test="${not empty metaKeywords}">
-		<meta name="keywords" content="${metaKeywords}">
-	</c:when>
-	<c:when test="${not empty appMetaKeyword}">
-		<meta name="keywords" content="${appMetaKeyword}">
-	</c:when>
-	<c:otherwise>
-		<meta name="keywords" content="cashback, shopping cashback, coupons, today offers, best cashback site, best cashback site in india">
-	</c:otherwise>
-</c:choose>
-
-<c:choose>
-	<c:when test="${not empty metaDescription}">
-		<meta name="description" content="${metaDescription}">
-	</c:when>
-	<c:otherwise>
-		<meta name="description" content="${appMetaDescription}">
-	</c:otherwise>
-</c:choose>
-
-
-<meta property="og:title" content="${ogTitle}" />
-<meta property="og:site_name" content="${appName}" />
-<meta property="og:url" content="${ogURL}" />
-<meta property="og:image" content="${appUrl}/${ogImage}" />
-<meta property="og:description" content="${ogDescription}" />
-<meta name="author" content="${auther}">
-<!-- Mobile Specific Meta -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/images/favicon1.ico" />
-<link rel="stylesheet" type="text/css"
-	href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
-<link rel="stylesheet" type="text/css"
-	href="${storeContext.request.contextPath}/styles/core/main.css" />
-
-<link rel="stylesheet" type="text/css"
-	href="${storeContext.request.contextPath}/styles/core/typeahead.css" />
-<!-- Essential jQuery Plugins
-================================================== -->
-<script type="text/javascript"
-	src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
-<script type="text/javascript"
-	src="${storeContext.request.contextPath}/scripts/core/custom.js"></script>
-<!-- <script type='text/javascript' src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
+	<!-- meta charec set -->
+	<meta charset="utf-8">
+	<!-- Always force latest IE rendering engine or request Chrome Frame -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><decorator:title/></title>
+	<!-- <title>oorni</title> -->
+	<!-- Store Title -->
+	<%-- <c:choose>
+		<c:when test="${not empty storeTitle}">
+			<title>${storeTitle}</title>
+		</c:when>
+		<c:when test="${not empty appTitle}">
+			<title>${appTitle}</title>
+		</c:when>
+	</c:choose> --%>
+	
+	<c:choose>
+		<c:when test="${not empty metaKeywords}">
+			<meta name="keywords" content="${metaKeywords}">
+		</c:when>
+		<c:when test="${not empty appMetaKeyword}">
+			<meta name="keywords" content="${appMetaKeyword}">
+		</c:when>
+		<c:otherwise>
+			<meta name="keywords" content="cashback, shopping cashback, coupons, today offers, best cashback site, best cashback site in india">
+		</c:otherwise>
+	</c:choose>
+	
+	<c:choose>
+		<c:when test="${not empty metaDescription}">
+			<meta name="description" content="${metaDescription}">
+		</c:when>
+		<c:otherwise>
+			<meta name="description" content="${appMetaDescription}">
+		</c:otherwise>
+	</c:choose>
+	
+	
+	<meta property="og:title" content="${ogTitle}" />
+	<meta property="og:site_name" content="${appName}" />
+	<meta property="og:url" content="${ogURL}" />
+	<meta property="og:image" content="${appUrl}/${ogImage}" />
+	<meta property="og:description" content="${ogDescription}" />
+	<meta name="author" content="${auther}">
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/images/favicon1.ico" />
+	<link rel="stylesheet" type="text/css"
+		href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
+	
+	<script type="text/javascript"
+		src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
 </head>
 
 <body id="body">
@@ -513,15 +505,15 @@
         ==================================== -->
 	<footer id="footer" class="footer">
 		<div class="container">
-			<div class="col-md-3 col-sm-6 col-xs-12">
+			<%-- <div class="col-md-2 col-sm-6 col-xs-12">
 				<div class="footer-single">
 					<!-- <img src="images/core/footer-logo.png" alt=""> -->
 					<h2>
 						<a title="${applicationName} home" href="${applicationUrl}">${applicationName}</a>
 					</h2>
 				</div>
-			</div>
-			<div class="col-md-9 col-sm-6 col-xs-12">
+			</div> --%>
+			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="text-center">
 					<a title="about menu" href="${applicationUrl}/site/about">About</a>
 					| <a title="contact menu" href="${applicationUrl}/site/contact">Contact</a>
@@ -532,10 +524,10 @@
 						title="faq menu" href="${applicationUrl}/site/faq">FAQ</a>
 				</div>
 				<p class="text-center">
-					Copyright <i class="fa fa-copyright"></i> 2016 <a
+					Copyright <i class="fa fa-copyright"></i> 2017 <a
 						title="copy rights" href="${applicationUrl}/">${applicationName}</a>.
 					All rights reserved. Designed & developed by <a
-						title="developed by" href="${applicationUrl}/">${applicationName}</a>
+						title="developed by" href="${applicationUrl}/">oorni.com</a>
 				</p>
 			</div>
 		</div>
@@ -543,8 +535,8 @@
 	<!--         End Footer
         ==================================== -->
 
-	<a href="javascript:void(0);" id="back-top"><i
-		class="fa fa-angle-up fa-3x"></i></a>
+	<!-- <a href="javascript:void(0);" id="back-top"><i
+		class="fa fa-angle-up fa-3x"></i></a> -->
 	<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog" >
 			<div class="modal-dialog">

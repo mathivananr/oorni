@@ -71,7 +71,12 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 	}
 
 	public Store getMyStore() throws OorniException {
-		return storeDao.getStoreByOwnerId(CommonUtil.getLoggedInUserId());
+		String userId = CommonUtil.getLoggedInUserId();
+		if(!StringUtil.isEmptyString(userId) && !userId.equalsIgnoreCase("anonymousUser")) {
+			return storeDao.getStoreByOwnerId(userId);
+		} else {
+			return null;
+		}
 	}
 
 	public String getMerchantURL(String storeName, String merchantName) throws OorniException {

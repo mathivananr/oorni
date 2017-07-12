@@ -9,9 +9,9 @@
     <decorator name="default" page="default.jsp">
         <pattern>/admin*</pattern>
     </decorator>
-    <decorator name="site" page="site.jsp">
+    <!-- <decorator name="site" page="site.jsp">
         <pattern>/site*</pattern>
-    </decorator>
+    </decorator> -->
     <decorator name="oorni" page="oorni.jsp">
         <pattern>/*</pattern>
     </decorator>

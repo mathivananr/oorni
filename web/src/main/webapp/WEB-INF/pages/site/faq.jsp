@@ -1,4 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
+<head>
+	<title>FAQ</title>
+</head>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<div class="sec-title text-center mb50">
 		<h2>Frequently Asked Questions</h2>
@@ -10,13 +13,6 @@
 <div class="container">
 	<br /> <br />
 
-	<div class="alert alert-success alert-dismissible" role="alert">
-		<button type="button" class="close" data-dismiss="alert">
-			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-		</button>
-		:) Greener tomorrow is with us now. :). If you cannot find an answer
-		to your question, make sure to contact us at <strong>contact@muniyamma.com</strong>
-	</div>
 	<br />
 
 	<div class="panel-group" id="accordion">
@@ -26,7 +22,7 @@
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse"
 						data-parent="#accordion" href="#collapseTen">What are the
-						payment options on Muniyamma.com?</a>
+						payment options on oorni.com?</a>
 				</h4>
 			</div>
 			<div id="collapseTen" class="panel-collapse collapse in">
@@ -64,7 +60,7 @@
 							your bank's secure Internet banking website.</li>
 						<li>Enter your banking user name and password.</li>
 						<li>Confirm your payment and you will be redirected back to
-							Muniyamma.com.</li>
+							oorni.com.</li>
 					</ul>
 				</div>
 			</div>
@@ -127,7 +123,7 @@
 				</h4>
 			</div>
 			<div id="collapse6" class="panel-collapse collapse">
-				<div class="panel-body">Now it's beta version of muniyamma so
+				<div class="panel-body">Now it's beta version of oorni so
 					only 10 Rs recharge are available. Complete website coming soon.</div>
 			</div>
 		</div>
@@ -145,7 +141,7 @@
 					engineer to become farmer then this is the place for your recharge
 					and share the site in social media like <span
 						class="share-text-color">@one_of_your_friend </span> and <span
-						class="share-text-color">#muniyamma</span>.
+						class="share-text-color">#oorni</span>.
 				</div>
 			</div>
 		</div> -->
@@ -153,27 +149,42 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse"
-						data-parent="#accordion" href="#collapse8">Why we have to do
-						this?</a>
+						data-parent="#accordion" href="#collapse8">What is oorni.com?</a>
 				</h4>
 			</div>
 			<div id="collapse8" class="panel-collapse collapse">
-				<div class="panel-body">Are you support agriculture, are you
-					wish to change a software engineer to become farmer then this is
-					one of the way to support.</div>
+				<div class="panel-body">oorni.com is India's first Cashback and Coupons website for group. you will get extra cashback on your regular purchases via oorni.com store links.</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse"
-						data-parent="#accordion" href="#collapse8">How do we believe
-						that he will do agriculture?</a>
+						data-parent="#accordion" href="#collapse9">Does oorni.com charge anything from me?</a>
 				</h4>
 			</div>
-			<div id="collapse8" class="panel-collapse collapse">
-				<div class="panel-body">Believe is life. If you guys have
-					suggestions please write as to contact@muniyamma.com</div>
+			<div id="collapse9" class="panel-collapse collapse">
+				<div class="panel-body">No. we did not charge anything.</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle collapsed" data-toggle="collapse"
+						data-parent="#accordion" href="#collapse10">How can i earn cashback?</a>
+				</h4>
+			</div>
+			<div id="collapse10" class="panel-collapse collapse">
+				<div class="panel-body">
+					<ul>
+						<li>1. Login to oorni.com website</li>
+						<li>2. Create store from this <a href="/createStore" alt= "crate store">link</a></li>
+						<li>3. Created store will list your favourte merchants click the merchant logo link it will redirect to corresponding merchant website.</li>
+						<li>4. Shop and pay on the merchants site like you normally do</li>
+						<li>5. Merchatns pays us a commission for this sale. We pass that to you as 'Cashback'. Initially your cashback remains in 'Open' status. Once the return period of your product is over, merchant pays us in the next monthly payment cycle. Your cashback then becomes 'Confirmed'</li>
+						<li>6. When you have earned a minimum of Rs.250 as Confirmed Cashback, we can pay the money to your Indian bank account via NEFT (for free) or online wallet or by Amazon / Flipkart Gift Vouchers.</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -27,24 +27,16 @@
 		================================================== -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
-<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-		  ga('create', 'UA-64946971-1', 'auto');
-		  ga('send', 'pageview');
-	
-		</script>
+<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
 </head>
 
 <body id="body">
 	<input type="hidden" id="active-menu" value="${activeMenu}">
 	<!-- preloader -->
-	<div id="preloader">
+	<!-- <div id="preloader">
 		<img src="/images/core/preloader.gif" alt="Preloader">
-	</div>
+	</div> -->
 	<!-- end preloader -->
 
 	<!--
@@ -116,18 +108,5 @@
 
 	<!-- Essential jQuery Plugins
 		================================================== -->
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
-	<script>
-			var wow = new WOW ({
-				boxClass:     'wow',      // animated element css class (default is wow)
-				animateClass: 'animated', // animation css class (default is animated)
-				offset:       120,          // distance to the element when triggering the animation (default is 0)
-				mobile:       false,       // trigger animations on mobile devices (default is true)
-				live:         true        // act on asynchronously loaded content (default is true)
-			  }
-			);
-			wow.init();
-		</script>
 </body>
 </html>

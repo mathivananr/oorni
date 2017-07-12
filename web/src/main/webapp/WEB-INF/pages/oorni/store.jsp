@@ -1,5 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
-
+<head>
+	<title>${store.storeName}</title>
+</head>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<div class="row pad-B-10">
 		<div class="fb-share-button pull-right" data-href="http://localhost:2020/store/${store.storeName}" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2020/store/${store.storeName}&amp;src=sdkpreparse">Share</a></div>

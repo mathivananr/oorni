@@ -1,7 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 
 <head>
-<title><fmt:message key="store.title" /></title>
+<title>Edit Store</title>
 </head>
 
 <div class="col-sm-2">
