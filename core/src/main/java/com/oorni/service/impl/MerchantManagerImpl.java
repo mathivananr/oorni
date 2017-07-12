@@ -7,9 +7,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.oorni.Constants;
@@ -19,6 +22,7 @@ import com.oorni.model.Merchant;
 import com.oorni.model.MerchantType;
 import com.oorni.model.OfferLabel;
 import com.oorni.service.MerchantManager;
+import com.oorni.util.PropertyReader;
 import com.oorni.util.StringUtil;
 
 @Service("merchantManager")
@@ -27,6 +31,9 @@ public class MerchantManagerImpl extends GenericManagerImpl<Merchant, Long>
 
 	private MerchantDao merchantDao;
 
+	@Autowired
+	private ServletContext servletContext;
+	
 	@Autowired
 	public MerchantManagerImpl(MerchantDao merchantDao) {
 		super(merchantDao);
@@ -37,6 +44,14 @@ public class MerchantManagerImpl extends GenericManagerImpl<Merchant, Long>
 		return merchantDao.saveMerchant(merchant);
 	}
 
+	public Merchant saveMerchant(Merchant merchant, CommonsMultipartFile file) throws OorniException {
+		PropertyReader reader = PropertyReader.getInstance();
+		String uploadDir = reader.getPropertyFromFile(Constants.DATA_TYPE_STRING, Constants.APP_FILE_PATH);
+		if(StringUtil.isEmptyString(uploadDir)) {
+			uploadDir = servletContext.getRealPath("/images");
+		}
+		return saveMerchant(merchant, file, uploadDir);
+	}
 	public Merchant saveMerchant(Merchant merchant, CommonsMultipartFile file,
 			String uploadDir) throws OorniException {
 		if (file != null && !file.isEmpty()) {

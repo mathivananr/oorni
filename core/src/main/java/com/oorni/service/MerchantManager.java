@@ -49,4 +49,5 @@ public interface MerchantManager extends GenericManager<Merchant, Long> {
 	
 	List<String> getMerchantNames(String name)
 			throws OorniException;
+	Merchant saveMerchant(Merchant merchant, CommonsMultipartFile file) throws OorniException;
 }

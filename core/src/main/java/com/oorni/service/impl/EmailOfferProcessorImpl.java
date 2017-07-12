@@ -52,6 +52,7 @@ import com.oorni.model.Offer;
 import com.oorni.service.EmailOfferProcessor;
 import com.oorni.service.OfferManager;
 import com.oorni.util.ApiUtil;
+import com.oorni.util.PropertyReader;
 import com.oorni.util.StringUtil;
 
 @Service("emailOfferProcessor")
@@ -712,7 +713,12 @@ public class EmailOfferProcessorImpl implements EmailOfferProcessor {
 							continue;
 						} else {
 							//System.out.println("save this image");
-							String uploadDir = servletContext.getRealPath("/files");
+							PropertyReader reader = PropertyReader.getInstance();
+							String uploadDir = reader.getPropertyFromFile(Constants.DATA_TYPE_STRING, Constants.APP_FILE_PATH);
+							if(StringUtil.isEmptyString(uploadDir)) {
+								uploadDir = servletContext.getRealPath("/images");
+							}
+							
 							File f = null;
 							boolean isImagesPath = false;
 							if(uploadDir != null) {

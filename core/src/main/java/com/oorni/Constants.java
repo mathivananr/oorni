@@ -159,6 +159,8 @@ public final class Constants {
 	
 	public static final String APP_URL_CONFIG_KEY = "app.url";
 	
+	public static final String APP_FILE_PATH = "app.file.path";
+	
 	public static final String APP_URL = "appUrl";
 	
 	public static final String APP_NAME_CONFIG_KEY = "app.name";

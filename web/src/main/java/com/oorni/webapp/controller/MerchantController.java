@@ -184,11 +184,7 @@ public class MerchantController extends BaseFormController {
 				merchant.setCreatedOn(now);
 			}
 			merchant.setUpdatedOn(now);
-			String uploadDir = getServletContext().getRealPath("/files");
-			if(StringUtil.isEmptyString(uploadDir)) {
-				uploadDir = getServletContext().getRealPath("/images");
-			}
-			merchantManager.saveMerchant(merchant, file, uploadDir);
+			merchantManager.saveMerchant(merchant, file);
 			saveMessage(request, "Merchant saved successfully.");
 			return new ModelAndView("redirect:/admin/merchants");
 		} catch (OorniException e) {
