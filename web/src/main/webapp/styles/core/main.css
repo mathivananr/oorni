@@ -755,6 +755,14 @@ label.error {
 	padding : 10px;	
 }
 
+.pad-T-10 {
+	padding-top : 10px;
+}
+	
+.pad-T-20 {
+	padding-top : 20px;
+}
+
 .pad-L-10 {
 	padding-left : 10px;	
 }

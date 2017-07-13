@@ -57,6 +57,7 @@
 	<link rel="stylesheet" type="text/css"
 		href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
 	
+	
 	<script type="text/javascript"
 		src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
 </head>
@@ -538,7 +539,7 @@
 	<!-- <a href="javascript:void(0);" id="back-top"><i
 		class="fa fa-angle-up fa-3x"></i></a> -->
 	<!-- Modal -->
-		<div id="myModal" class="modal fade" role="dialog" >
+		<div id="myModal" class="modal fade" role="dialog" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content row" style="padding-bottom:20px;">
 					<!-- <div class="row">

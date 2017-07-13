@@ -54,7 +54,7 @@ public class StoreManagerImpl extends GenericManagerImpl<Store, Long> implements
 		}
 		store.setOwner(CommonUtil.getLoggedInUser());
 		store.setUpdatedOn(now);
-		store.setStoreName(store.getStoreName().replaceAll(" ", "-"));
+		//store.setStoreName(store.getStoreName().replaceAll(" ", "-"));
 		return storeDao.saveStore(store);
 	}
 

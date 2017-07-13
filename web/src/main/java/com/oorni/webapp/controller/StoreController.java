@@ -35,6 +35,7 @@ import com.oorni.service.RoleManager;
 import com.oorni.service.StoreManager;
 import com.oorni.service.UserExistsException;
 import com.oorni.util.CommonUtil;
+import com.oorni.util.StringUtil;
 
 @Controller
 public class StoreController extends BaseFormController {
@@ -118,11 +119,15 @@ public class StoreController extends BaseFormController {
 			HttpServletRequest request) {
 		Model model = new ExtendedModelMap();
 		try {
-			Store updatedStore = storeManager.saveStore(store);
-			CommonUtil.getLoggedInUser().setStore(updatedStore);
-			saveMessage(request, "Store saved successfully.");
-			model.addAttribute(Constants.PAGE, updatedStore);
-			return new ModelAndView("redirect:/store/"+store.getStoreName());
+			if(store.getStoreId() == null && storeManager.getStoreByName(store.getStoreName()) != null ) {
+				throw new OorniException("store name already exists for name : "+store.getStoreName());
+			} else {
+				Store updatedStore = storeManager.saveStore(store);
+				CommonUtil.getLoggedInUser().setStore(updatedStore);
+				saveMessage(request, "Store saved successfully.");
+				model.addAttribute(Constants.PAGE, updatedStore);
+				return new ModelAndView("redirect:/store/"+store.getStoreName());
+			}
 		} catch (OorniException e) {
 			model.addAttribute(Constants.PAGE, store);
 			return new ModelAndView("/user/storeform", model.asMap());
