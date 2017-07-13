@@ -29,8 +29,9 @@ public final class CommonUtil {
 		User user = (User)authentication.getPrincipal();
 		boolean isAdmin = false;
 		for(Role role: user.getRoles()) {
-			role.getName().equals(Constants.ADMIN_ROLE);
-			isAdmin = true;
+			if(role.getName().equals(Constants.ADMIN_ROLE)){
+				isAdmin = true;
+			}
 		}
 		return isAdmin;
 	}

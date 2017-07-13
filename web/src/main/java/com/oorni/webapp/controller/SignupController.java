@@ -41,7 +41,7 @@ public class SignupController extends BaseFormController {
 
     public SignupController() {
         setCancelView("redirect:login");
-        setSuccessView("redirect:home");
+        setSuccessView("redirect:cashback");
     }
 
     @ModelAttribute
