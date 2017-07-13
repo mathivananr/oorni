@@ -333,6 +333,6 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
 	@Transactional
 	public List<Payment> getPayments(String username) {
 		return getSession().createCriteria(Payment.class)
-		.add(Restrictions.eq("createBy", username)).list();
+		.add(Restrictions.eq("createdBy", username)).list();
 	}
 }
