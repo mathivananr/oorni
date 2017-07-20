@@ -91,7 +91,7 @@
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
 					  <div class="talktext">
-					    <p>is it?</p>
+					    <p>Is it?</p>
 					  </div>
 					</div>
 				</div>
@@ -103,7 +103,7 @@
 	        			<div class="talk-bubble tri-right round btm-right-in pull-right">
 						  <div class="talktext">
 						     <p>
-						     yup, you know what? we do more...
+						     Yup, you know what? we do more...
 						  </div>
 						</div>
 					</div>
@@ -135,7 +135,7 @@
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
 					  <div class="talktext">
-					   	<p>you guys are crazy. how is that possible?</p>
+					   	<p>You guys are crazy. how is that possible?</p>
 					  </div>
 					</div>
 				</div>
@@ -146,7 +146,7 @@
 	        			<div class="talk-bubble tri-right round btm-right-in pull-right">
 						  <div class="talktext">
 						     <p>
-							 just share your store details with your friends and get cashback for their successful purchase each time via your store links.</p>
+							 Just share your store details with your friends and get cashback for their successful purchase each time via your store links.</p>
 						  </div>
 						</div>
 					</div>
@@ -189,7 +189,7 @@
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
 					  <div class="talktext">
-					    <p>OMG! it's simply amazing, I am going to create a store now. see you.</p>
+					    <p>OMG! It's simply amazing, I am going to create a store now. See you...</p>
 					  </div>
 					</div>
 				</div>
