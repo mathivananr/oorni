@@ -379,7 +379,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
 		if (StringUtil.isEmptyString(payment.getPaymentId())) {
 			payment.setCreatedOn(now);
 			payment.setCreatedBy(userName);
-			payment.setStatus(Constants.OPEN);
+			payment.setStatus(Constants.STATUS_PENDING);
 		}
 		payment.setUpdatedOn(now);
 		payment.setUpdatedBy(userName);

@@ -189,11 +189,13 @@ public final class Constants {
 	
 	public static final String STATUS_CONVERSION = "conversion";
 	
-	public static final String STATUS_MERCHANT_REJECT = "merchant reject";
+	public static final String STATUS_APPROVED = "approved";
 	
-	public static final String STATUS_PAYOUT_PENDING = "payout pending";
+	public static final String STATUS_REJECTED = "rejected";
 	
 	public static final String STATUS_PAID = "paid";
+	
+	public static final String STATUS_PENDING = "pending";
 	
 	public static final String STATUS_CANCELLED = "cancelled";
 }

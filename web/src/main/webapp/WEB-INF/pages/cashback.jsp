@@ -236,5 +236,8 @@
                 </div>
                 
             </div>
+            <div class="col-sm-12" style="padding:20px;">
+            	If you have any questions see <a title="how oorni works" href="/site/faq"> FAQ </a >page
+            </div>
         	
 </html>

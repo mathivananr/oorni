@@ -15,7 +15,7 @@
 
 	<br />
 
-	<div class="panel-group" id="accordion">
+	<div class="panel-group" id="accordion" style="padding:10px;">
 		<!-- <div class="faqHeader">FAQ</div> -->
 		<!-- <div class="panel panel-default">
 			<div class="panel-heading">
@@ -153,18 +153,7 @@
 				</h4>
 			</div>
 			<div id="collapse8" class="panel-collapse collapse">
-				<div class="panel-body">oorni.com is India's first Cashback and Coupons website for group. you will get extra cashback on your regular purchases via oorni.com store links.</div>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a class="accordion-toggle collapsed" data-toggle="collapse"
-						data-parent="#accordion" href="#collapse9">Does oorni.com charge anything from me?</a>
-				</h4>
-			</div>
-			<div id="collapse9" class="panel-collapse collapse">
-				<div class="panel-body">No. we did not charge anything.</div>
+				<div class="panel-body">oorni.com is India's best Cashback website. you will get extra cashback on your regular purchases via oorni.com store links.</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -179,13 +168,59 @@
 					<ul>
 						<li>1. Login to oorni.com website</li>
 						<li>2. Create store from this <a href="/createStore" alt= "crate store">link</a></li>
-						<li>3. Created store will list your favourte merchants click the merchant logo link it will redirect to corresponding merchant website.</li>
-						<li>4. Shop and pay on the merchants site like you normally do</li>
-						<li>5. Merchatns pays us a commission for this sale. We pass that to you as 'Cashback'. Initially your cashback remains in 'Open' status. Once the return period of your product is over, merchant pays us in the next monthly payment cycle. Your cashback then becomes 'Confirmed'</li>
-						<li>6. When you have earned a minimum of Rs.250 as Confirmed Cashback, we can pay the money to your Indian bank account via NEFT (for free) or online wallet or by Amazon / Flipkart Gift Vouchers.</li>
+						<li>3. Your created store will list your favourte merchants click the merchant logo link it will redirect to corresponding merchant website.</li>
+						<li>4. Continue your shopping as usual you do on merchant site.</li>
+						<li>5. Merchatns pays us a commission for this sale redirection. We pass that to you as 'cashback'. Initially your cashback remains in 'Click' and 'Conversion' status. Once the return period of your product is over, merchant pays us in the next monthly payment cycle then Your cashback then becomes 'Approved'</li>
+						<li>6. When you have earned a minimum of Rs.100 as confirmed cashback, we will pay the money to your online wallet or by Flipkart Gift Vouchers, and when the commission more than Rs.500 then we can pay the money to your Indian bank account via NEFT (for free).</li>
 					</ul>
 				</div>
 			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle collapsed" data-toggle="collapse"
+						data-parent="#accordion" href="#collapse11">How long it take me to get cashback in my hand?</a>
+				</h4>
+			</div>
+			<div id="collapse11" class="panel-collapse collapse">
+				<div class="panel-body">
+					<ul>
+						<li>It takes 4 to 8 weeks to get your cashback in hand. because of product return policy it's take while.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle collapsed" data-toggle="collapse"
+						data-parent="#accordion" href="#collapse12">What are all payment modes?</a>
+				</h4>
+			</div>
+			<div id="collapse12" class="panel-collapse collapse">
+				<div class="panel-body">
+					<ul>
+					    <li>We use multiple payment modes like NEFT, online wallet, flipkart voucher</li>
+						<li>When you have earned a minimum of Rs.100 as confirmed cashback, we will pay the money to your online wallet or by Flipkart Gift Vouchers.</li> 
+						<li>When your confirmed cashback more than Rs.500 then we can pay the money to your Indian bank account via NEFT (for free).</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle collapsed" data-toggle="collapse"
+						data-parent="#accordion" href="#collapse9">Does oorni.com charge anything from me?</a>
+				</h4>
+			</div>
+			<div id="collapse9" class="panel-collapse collapse">
+				<div class="panel-body">No. we did not charge anything.</div>
+			</div>
+		</div>
+		<div>
+			<label for="faq" class="control-label"> write if you have more questions to <a href="mailto:support@oorni.com" target="_top">support@oorni.com</a> or drop message in <a href="/chat">chat</a> </label>
 		</div>
 	</div>
 </div>

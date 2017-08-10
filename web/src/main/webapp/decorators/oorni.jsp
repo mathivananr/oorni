@@ -55,6 +55,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="/images/favicon1.ico" />
 	<link rel="stylesheet" type="text/css"
+		href="${storeContext.request.contextPath}/styles/core/main.css" />
+	<link rel="stylesheet" type="text/css"
 		href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
 	
 	

@@ -16,7 +16,7 @@
 
     <build>
         <plugins>
-            <plugin>
+            <!-- <plugin>
                 <groupId>de.juplo</groupId>
                 <artifactId>hibernate4-maven-plugin</artifactId>
                 <configuration>
@@ -25,7 +25,7 @@
                     <scanDependencies>none</scanDependencies>
                     <hibernateProperties>${project.build.testOutputDirectory}/jdbc.properties</hibernateProperties>
                 </configuration>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>dbunit-maven-plugin</artifactId>

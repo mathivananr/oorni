@@ -101,8 +101,8 @@
 					id="status" placeholder="status">
 					<option value="click">Click</option>
 					<option value="conversion">Conversion</option>
-					<option value="payout pending">Payout Pending</option>
-					<option value="merchant reject">Merchant Reject</option>
+					<option value="approved">Approved</option>
+					<option value="rejected">Rejected</option>
 					<option value="paid">Paid</option>
 					<option value="cancelled">Cancelled</option>
 				</form:select>

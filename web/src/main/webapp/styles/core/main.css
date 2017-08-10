@@ -7,7 +7,8 @@ body {
     background-color: #fff;
     font-family: 'Open Sans', sans-serif;
     line-height: 21px;
-	font-size: 13px;
+	font-size: 12px;
+	/* font-size: 2vmin; */
     color: #6a737b;
 }
 
@@ -789,7 +790,8 @@ label.error {
 }
 
 .dropdown-menu {
-	padding : 10px !important;	
+	padding : 10px !important;
+	right: -10% !important;	
 }
 
 .account-signup {
@@ -1251,6 +1253,7 @@ nav.sidebar ul.level1 ul.level2 li a {
 
 .nav-pills {
 	text-align:center;
+	font-weight:bold;
 }
 
 .nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover{
@@ -1580,4 +1583,8 @@ img:after {
 hr {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.panel-title {
+	line-height: 2;
 }

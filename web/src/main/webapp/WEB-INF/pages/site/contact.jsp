@@ -41,7 +41,7 @@
 						</form>
 					</div> -->
 					<div class="span12 sec-sub-title">
-						<p>Write to us <a class="link-color" href="mailto:contact@oorni.com">contact@oorni.com</a></p>
+						<p>Write us to <a class="link-color" href="mailto:contact@oorni.com">contact@oorni.com</a></p>
 					</div>
 					<!-- end contact form -->
 				</div>

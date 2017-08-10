@@ -43,6 +43,7 @@
 					path="paymentMode" id="paymentMode" placeholder1="Payment Mode">
 					<form:option value="bank account">Bank Account</form:option>
 					<form:option value="online wallet">Online Wallet</form:option>
+					<form:option value="flipkart gift card">Flipkart Gift Card</form:option>
 				</form:select>
 			</div>
 		</div>
@@ -106,6 +107,17 @@
 					<appfuse:label styleClass="control-label" key="payment.onlineWallet.walletEmail" />
 					<form:input cssClass="form-control input-border-bottom"
 						path="onlineWallet.walletEmail" id="email" placeholder1="Email" />
+				</div>
+			</div> 
+		</div>
+		<div id="flipkartGiftDiv">
+			<h5>
+				Flipkart Gift Card
+			</h5>
+			<hr/>
+			<div class="row">
+				<div class="col-sm-6 col-xs-6 form-group">
+					<label for="email" class="control-label pull-right"> We send gift card to registered email id. </label>
 				</div>
 			</div> 
 		</div>
@@ -178,10 +190,16 @@
 	function changePaymentMode() {
 		if($('#paymentMode').val() == 'bank account') {
 			$('#onlineWalletDiv').hide();
+			$('#flipkartGiftDiv').hide();
 			$('#bankAccountDiv').show();
 		} else if ($('#paymentMode').val() == 'online wallet'){
 			$('#bankAccountDiv').hide();
+			$('#flipkartGiftDiv').hide();
 			$('#onlineWalletDiv').show();
+		} else if ($('#paymentMode').val() == 'flipkart gift card') {
+			$('#bankAccountDiv').hide();
+			$('#onlineWalletDiv').hide();
+			$('#flipkartGiftDiv').show();
 		}
 	}
 
