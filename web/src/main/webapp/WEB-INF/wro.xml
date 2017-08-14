@@ -40,7 +40,7 @@
         <js>/scripts/core/moment.js</js>
         <js>/scripts/core/bootstrap-datetimepicker.min.js</js>
         <js>/scripts/core/typeahead.js</js>
-        <js>/scripts/core/custom.js</js>
+        <!-- <js>/scripts/core/custom.js</js> -->
 		
     </group>
     <group name="oorni-post">

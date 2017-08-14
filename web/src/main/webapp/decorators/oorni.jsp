@@ -654,6 +654,6 @@
 </script>
 <!-- Essential jQuery Plugins
 ================================================== -->
-<%-- <script type="text/javascript"
-	src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni-post.js"></script> --%>
+<script type="text/javascript"
+	src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni-post.js"></script>
 </html>
