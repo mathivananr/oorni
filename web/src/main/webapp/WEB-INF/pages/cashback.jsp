@@ -15,7 +15,7 @@
         	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pad-B-20"><h6 style="display: inline;">What </h6><h5 style="display: inline;">is </h5><h4 style="display: inline;">this </h4><h3 style="display: inline;">site </h3><h2 style="display: inline;">about</h2><h1 style="display: inline;">?</h1></div>
         	<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  >
        			<div style="float:left;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       				<img src="/images/cash-tell.png"/>
+       				<img src="/images/chat/cash-tell.jpg"/>
        			</div>
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-lis.png"/>
+       					<img src="/images/chat/cash-lis.jpg"/>
        				</div>
 				</div>
         	</div> -->
@@ -50,13 +50,13 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-tell.png"/>
+       					<img src="/images/chat/cash-tell.jpg"/>
        				</div>
 				</div>
         	</div>
         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  >
        			<div style="float:left;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-       				<img src="/images/cash-lis.png"/>
+       				<img src="/images/chat/cash-lis.jpg"/>
        			</div>
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
@@ -80,13 +80,13 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-tell.png"/>
+       					<img src="/images/chat/cash-tell.jpg"/>
        				</div>
 				</div>
         	</div>
         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  >
        			<div style="float:left;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-       				<img src="/images/cash-lis5.png"/>
+       				<img src="/images/chat/cash-lis5.jpg"/>
        			</div>
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
@@ -108,7 +108,7 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-tell.png"/>
+       					<img src="/images/chat/cash-tell.jpg"/>
        				</div>
 				</div>
         	</div>
@@ -124,13 +124,13 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-tell.png"/>
+       					<img src="/images/chat/cash-tell.jpg"/>
        				</div>
 				</div>
         	</div>
         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  >
        			<div style="float:left;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       				<img src="/images/cash-lis7.png"/>
+       				<img src="/images/chat/cash-lis7.jpg"/>
        			</div>
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
@@ -151,13 +151,13 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-tell.png"/>
+       					<img src="/images/chat/cash-tell.jpg"/>
        				</div>
 				</div>
         	</div>
         	<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  >
        			<div style="float:left;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       				<img src="/images/cash-lis7.png"/>
+       				<img src="/images/chat/cash-lis7.jpg"/>
        			</div>
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">
@@ -178,13 +178,13 @@
 						</div>
 					</div>
 					<div style="" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-       					<img src="/images/cash-tell.png"/>
+       					<img src="/images/chat/cash-tell.jpg"/>
        				</div>
 				</div>
         	</div> -->
         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  >
        			<div style="float:left;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-       				<img src="/images/cash-lis6.png"/>
+       				<img src="/images/chat/cash-lis6.jpg"/>
        			</div>
        			<div style="float:left" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 	       			<div class="talk-bubble tri-right round btm-left-in">

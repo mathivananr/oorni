@@ -55,11 +55,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="/images/favicon1.ico" />
 	<link rel="stylesheet" type="text/css"
-		href="${storeContext.request.contextPath}/styles/core/main.css" />
-	<link rel="stylesheet" type="text/css"
 		href="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.css" />
-	
-	
 	<script type="text/javascript"
 		src="${storeContext.request.contextPath}/assets/v/${applicationScope.assetsVersion}/oorni.js"></script>
 </head>
@@ -85,9 +81,9 @@
 
 	<!--         Fixed Navigation
         ==================================== -->
-<div class="pull-right right-strap beta">
+<!-- <div class="pull-right right-strap beta">
 		<img alt="beta version" src="/images/beta.png" height=75 width=90 />
-</div>
+</div> -->
 
 	<header id="navigation" class="navbar">
 		<!-- <div class="container"> -->
@@ -120,7 +116,7 @@
 		</div>
 
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<div class="search-row pull-right" role="navigation" style="padding-right:30px;">
+			<div class="search-row pull-right" role="navigation">
 				<security:authentication var="user" property="principal" />
 				<ul class="nav nav-pills">
 					<c:choose>
